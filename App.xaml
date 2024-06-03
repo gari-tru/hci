@@ -6,6 +6,16 @@
              StartupUri="View/SignInForm.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <sys:String x:Key="DateTimeFormat">dd.MM.yyyy. HH:mm</sys:String>
+            
+            <BitmapImage x:Key="menu" UriSource="Resources/Images/menu.png"/>
+            <BitmapImage x:Key="logo" UriSource="Resources/Images/logo.png"/>
+            <BitmapImage x:Key="back" UriSource="Resources/Images/back.png"/>
+            <BitmapImage x:Key="calendar" UriSource="Resources/Images/calendar.png"/>
+            <BitmapImage x:Key="add" UriSource="Resources/Images/add.png"/>
+            <BitmapImage x:Key="stats" UriSource="Resources/Images/stats.png"/>
+            <BitmapImage x:Key="bell" UriSource="Resources/Images/bell.png"/>
+
             <Style x:Key="CustomButton" TargetType="Button">
                 <Setter Property="Background" Value="#FFD9D9D9" />
                 <Setter Property="Foreground" Value="#FF000000" />
@@ -94,8 +104,6 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-
-            <sys:String x:Key="DateTimeFormat">dd.MM.yyyy. HH:mm</sys:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

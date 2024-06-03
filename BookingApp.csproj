@@ -20,11 +20,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Remove="Resources\Images\.png" />
 	  <Content Remove="Resources\Images\close.png" />
 	  <Content Remove="Resources\Images\delete.png" />
 	  <Content Remove="Resources\Images\maximize.png" />
 	  <Content Remove="Resources\Images\minimize.png" />
 	  <Content Remove="Resources\Images\restore.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\.png" />
+	  <None Remove="Resources\Images\add.png" />
+	  <None Remove="Resources\Images\back.png" />
+	  <None Remove="Resources\Images\bell.png" />
+	  <None Remove="Resources\Images\calendar.png" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\menu.png" />
+	  <None Remove="Resources\Images\stats.png" />
 	</ItemGroup>
 
 	<ItemGroup>

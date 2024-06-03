@@ -80,8 +80,8 @@ namespace BookingApp.View
                     guestMainWindow.Show();
                     break;
                 case Role.Guide:
-                    GuideMainWindow guideMainWindow = new GuideMainWindow(user.Id);
-                    guideMainWindow.Show();
+                    GuideMainWindowView guideMainWindowView = new GuideMainWindowView(user.Id);
+                    guideMainWindowView.Show();
                     break;
                 case Role.Tourist:
                     TourWindow tourWindow = new TourWindow(user);
