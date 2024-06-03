@@ -6,10 +6,15 @@
         xmlns:local="clr-namespace:BookingApp.View.Guide"
         mc:Ignorable="d"
         Title="GuideMainWindowView" Height="750" Width="430" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CornerRadius="50" GlassFrameThickness="0"></WindowChrome>
+    </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
@@ -30,13 +35,16 @@
                 <Image Source="{StaticResource back}"/>
             </Grid>
         </Grid>
-        
-        <Grid Grid.Row="1" Margin="10">
-            
+
+        <Rectangle Grid.Row="1" Fill="Black" Height="3"/>
+
+        <Grid Grid.Row="2" Margin="10">
 
         </Grid>
 
-        <Grid Grid.Row="2" Margin="10">
+        <Rectangle Grid.Row="3" Fill="Black" Height="3"/>
+
+        <Grid Grid.Row="4" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
