@@ -1,0 +1,28 @@
+﻿<Window x:Class="BookingApp.View.DateSelectionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:BookingApp.Converter"
+        Title="Selekcija datuma" Height="230" Width="300" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <converters:DateTimeConverter x:Key="DateTimeConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Izaberite datum:" Grid.Row="0" Margin="10"/>
+
+        <ComboBox x:Name="cbAvailableDates" 
+                  ItemsSource="{Binding AvailableDates}" 
+                  SelectedItem="{Binding SelectedDate, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}"
+                  Grid.Row="1" Margin="10"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0,20,0,0">
+            <Button Content="Rezerviši" Style="{StaticResource CustomButton}" Click="ReserveSelectedDates" Margin="5" Height="28" Width="83"/>
+            <Button Content="Otkaži" Style="{StaticResource CustomButton}" Click="Cancel" Margin="5" Height="28" Width="58"/>
+        </StackPanel>
+    </Grid>
+</Window>
