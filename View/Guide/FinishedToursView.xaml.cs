@@ -15,13 +15,13 @@ namespace BookingApp.View.Guide
         public FinishedToursView(int userId)
         {
             InitializeComponent();
-            finishedToursViewModel = new FinishedToursViewModel(userId);
+            //finishedToursViewModel = new FinishedToursViewModel(userId);
             DataContext = finishedToursViewModel;
         }
 
         private void cbMostVisitedTour_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            finishedToursViewModel.MostVisitedTour();
+            //finishedToursViewModel.MostVisitedTour();
         }
 
         private void btnTourStatistics_Click(object sender, RoutedEventArgs e)

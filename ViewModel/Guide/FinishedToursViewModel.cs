@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
+using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Model;
 
@@ -20,7 +22,7 @@ namespace BookingApp.ViewModel.Guide
             {
                 _selectedYear = value;
                 OnPropertyChanged(nameof(_selectedYear));
-                MostVisitedTour();
+                MostVisitedTourExecute(null);
             }
         }
 
@@ -31,9 +33,15 @@ namespace BookingApp.ViewModel.Guide
         private TourService tourService = new TourService();
         private ScheduledTourService scheduledTourService = new ScheduledTourService();
 
-        public FinishedToursViewModel(int userId)
+        public Frame NavigationService { get; set; }
+        public RelayCommand MostVisitedTour { get; set; }
+
+        public FinishedToursViewModel(int userId, Frame navigationService)
         {
             this.userId = userId;
+            NavigationService = navigationService;
+            MostVisitedTour = new RelayCommand(MostVisitedTourExecute);
+            MostVisitedTourExecute(null);
             InitializeTourDtos();
             FilterUniqueYears();
             Years.Insert(0, "Za sva vremena");
@@ -61,7 +69,7 @@ namespace BookingApp.ViewModel.Guide
            );
         }
 
-        public void MostVisitedTour()
+        private void MostVisitedTourExecute(object parameter)
         {
             ScheduledTour scheduledTour = scheduledTourService.GetMostVisitedByYear(userId, SelectedYear);
             if (scheduledTour != null)

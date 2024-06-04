@@ -9,6 +9,63 @@
       Title="FinishedToursPage"
       Style="{StaticResource page}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Statistika o turama" Style="{StaticResource h1.5}" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Content="PDF" Style="{StaticResource button}" Margin="10,0,0,0"/>
+        </Grid>
+
+        <TextBlock Grid.Row="1" Text="Najposećenija tura" Style="{StaticResource h2}"/>
         
+        <Grid Grid.Row="2" VerticalAlignment="Center" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Godina" Style="{StaticResource h2}"/>
+            <ComboBox Grid.Column="1" Style="{StaticResource comboBox}" Width="114" ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}"
+                      HorizontalAlignment="Left" Margin="10,0,0,0"/>
+        </Grid>
+
+        <ListView Grid.Row="3" ItemsSource="{Binding MostVisitedTourDto}" Style="{StaticResource listView}" Margin="0,10,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Width="50" Height="50" Margin="0 0 10 0">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding Tour.Images[0]}" Stretch="UniformToFill" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                        <WrapPanel Orientation="Vertical" Width="208">
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Text="Broj turista: " Style="{StaticResource h3}"/>
+                                <TextBlock Text="{Binding ScheduledTour.Tourists.Count}" Style="{StaticResource h3}"/>
+                            </WrapPanel>
+                            <TextBlock Text="{Binding Tour.Name}" Style="{StaticResource h4}"/>
+                            <TextBlock Text="{Binding Tour.Location}" Style="{StaticResource h4}"/>
+                        </WrapPanel>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Grid.Row="4" Text="Završene ture" Style="{StaticResource h2}"/>
     </Grid>
 </Page>

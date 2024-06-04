@@ -18,7 +18,6 @@
             <BitmapImage x:Key="start" UriSource="Resources/Images/start.png"/>
             <BitmapImage x:Key="cancel" UriSource="Resources/Images/cancel.png"/>
             <BitmapImage x:Key="pin" UriSource="Resources/Images/pin.png"/>
-            <BitmapImage x:Key="pdf" UriSource="Resources/Images/pdf.png"/>
 
             <Style x:Key="page" TargetType="Page">
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
@@ -40,6 +39,11 @@
             </Style>
 
             <Style x:Key="h3" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+
+            <Style x:Key="h4" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>

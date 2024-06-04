@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using BookingApp.ViewModel.Guide;
 
 namespace BookingApp.View.Guide
 {
@@ -10,6 +11,7 @@ namespace BookingApp.View.Guide
         public FinishedToursPage(int userId, Frame navigationService)
         {
             InitializeComponent();
+            DataContext = new FinishedToursViewModel(userId, navigationService);
         }
     }
 }
