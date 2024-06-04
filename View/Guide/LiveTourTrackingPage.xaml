@@ -1,0 +1,37 @@
+﻿<Page x:Class="BookingApp.View.Guide.LiveTourTrackingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BookingApp.View.Guide"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LiveTourTrackingPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Praćenje ture uživo" Style="{StaticResource h1}"/>
+
+        <TextBlock Grid.Row="1" Text="{Binding TourDto.Tour.Name}" Style="{StaticResource h1.5}" Margin="0,10,0,0"/>
+
+        <Image Grid.Row="2" Source="{Binding TourDto.Tour.Images[0]}" Width="410" Height="150" Margin="0,10,0,0"/>
+
+        <ListView Grid.Row="3" x:Name="lvKeyPoints" SelectedIndex="{Binding SelectedKeyPointIndex}" ItemsSource="{Binding TourDto.Tour.KeyPoints}" Style="{StaticResource listView}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,10,0,0">
+                        <TextBlock Text="{Binding Name}" Style="{StaticResource h2}" HorizontalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="4" Content="Završi" Style="{StaticResource button}"/>
+    </Grid>
+</Page>

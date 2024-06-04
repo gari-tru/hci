@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using BookingApp.Command;
+using BookingApp.ViewModel.Guide;
 
 namespace BookingApp.View.Guide
 {
@@ -10,6 +12,7 @@ namespace BookingApp.View.Guide
         public GuideMainWindowView(int userId)
         {
             InitializeComponent();
+            DataContext = new GuideMainWindowViewModel(userId, NavigationService);
         }
     }
 }

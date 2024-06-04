@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Controls;
 using BookingApp.Dto;
 using BookingApp.Model;
 
@@ -49,9 +50,12 @@ namespace BookingApp.ViewModel.Guide
         private TourService tourService = new TourService();
         private ScheduledTourService scheduledTourService = new ScheduledTourService();
 
-        public LiveTourTrackingViewModel(TourDto tourDto)
+        public Frame NavigationService { get; set; }
+
+        public LiveTourTrackingViewModel(TourDto tourDto, Frame navigationService)
         {
             TourDto = tourDto;
+            NavigationService = navigationService;
         }
 
         public void FinishTour()

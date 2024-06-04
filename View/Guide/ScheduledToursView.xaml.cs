@@ -15,11 +15,11 @@ namespace BookingApp.View.Guide
         public ScheduledToursView(int userId)
         {
             InitializeComponent();
-            scheduledToursViewModel = new ScheduledToursViewModel(userId);
+            //scheduledToursViewModel = new ScheduledToursViewModel(userId);
             DataContext = scheduledToursViewModel;
         }
 
-        private void btnStartTour_Click(object sender, RoutedEventArgs e)
+        /*private void btnStartTour_Click(object sender, RoutedEventArgs e)
         {
             scheduledToursViewModel.StartTour((TourDto)((Button)sender).CommandParameter);
         }
@@ -27,6 +27,6 @@ namespace BookingApp.View.Guide
         private void btnCancelTour_Click(object sender, RoutedEventArgs e)
         {
             scheduledToursViewModel.CancelTour((TourDto)((Button)sender).CommandParameter);
-        }
+        }*/
     }
 }

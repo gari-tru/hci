@@ -11,7 +11,7 @@ namespace BookingApp.View.Guide
         public LiveTourTrackingView(TourDto tourDto)
         {
             InitializeComponent();
-            liveTourTrackingViewModel = new LiveTourTrackingViewModel(tourDto);
+            //liveTourTrackingViewModel = new LiveTourTrackingViewModel(tourDto);
             DataContext = liveTourTrackingViewModel;
 
             liveTourTrackingViewModel.IsLiveTourTrackingFinished += (sender, tourDto) =>

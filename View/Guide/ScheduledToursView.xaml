@@ -156,7 +156,7 @@
                                     <TextBlock Text="{Binding Tour.Location}" FontFamily="Microsoft Sans Serif" FontSize="20" TextWrapping="Wrap" Foreground="#A9A9A9"/>
                                     <TextBlock Text="{Binding ScheduledTour.Start, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" FontFamily="Microsoft Sans Serif" FontSize="20" TextWrapping="Wrap" Foreground="#A9A9A9"/>
                                 </WrapPanel>
-                                <Button CommandParameter="{Binding}" Click="btnStartTour_Click" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                                <Button CommandParameter="{Binding}" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
                                     <Button.Visibility>
                                         <Binding Path="ScheduledTour.IsToday">
                                             <Binding.Converter>
@@ -168,7 +168,7 @@
                                         <Image Source="../Resources/Images/start.png" Width="53" Height="53" RenderOptions.BitmapScalingMode="HighQuality"/>
                                     </StackPanel>
                                 </Button>
-                                <Button CommandParameter="{Binding}" Click="btnCancelTour_Click" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="2 0 0 0">
+                                <Button CommandParameter="{Binding}" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="2 0 0 0">
                                     <Button.Visibility>
                                         <Binding Path="ScheduledTour.IsCancellable">
                                             <Binding.Converter>

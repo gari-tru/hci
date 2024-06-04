@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="GuideMainWindowView" Height="750" Width="430" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <WindowChrome.WindowChrome>
-        <WindowChrome CornerRadius="50" GlassFrameThickness="0"></WindowChrome>
+        <WindowChrome CornerRadius="50" GlassFrameThickness="0"/>
     </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
@@ -29,17 +29,21 @@
                 <Image Source="{StaticResource menu}"/>
             </Grid>
             <Grid Grid.Column="1">
-                <Image Source="{StaticResource logo}"/>
+                <Button Command="{Binding NavigateScheduledTours}" Style="{StaticResource transparentButton}">
+                    <Image Source="{StaticResource logo}"/>
+                </Button>
             </Grid>
             <Grid Grid.Column="2" HorizontalAlignment="Right">
-                <Image Source="{StaticResource back}"/>
+                <Button Command="{Binding NavigateBack}" Style="{StaticResource transparentButton}">
+                    <Image Source="{StaticResource back}"/>
+                </Button>
             </Grid>
         </Grid>
 
         <Rectangle Grid.Row="1" Fill="Black" Height="3"/>
 
-        <Grid Grid.Row="2" Margin="10">
-
+        <Grid Grid.Row="2" Margin="10,10,10,0">
+            <Frame x:Name="NavigationService" NavigationUIVisibility="Hidden"/>
         </Grid>
 
         <Rectangle Grid.Row="3" Fill="Black" Height="3"/>
@@ -53,10 +57,14 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0" HorizontalAlignment="Left">
-                <Image Source="{StaticResource calendar}"/>
+                <Button Command="{Binding NavigateScheduledTours}" Style="{StaticResource transparentButton}">
+                    <Image Source="{StaticResource calendar}"/>
+                </Button>
             </Grid>
             <Grid Grid.Column="1">
-                <Image Source="{StaticResource add}"/>
+                <Button Command="{Binding NavigateCreateTour}" Style="{StaticResource transparentButton}">
+                    <Image Source="{StaticResource add}"/>
+                </Button>
             </Grid>
             <Grid Grid.Column="2">
                 <Image Source="{StaticResource stats}"/>
