@@ -9,6 +9,48 @@
       Title="MarkTouristsPage"
       Style="{StaticResource page}">
     <Grid>
-        <TextBlock>cao</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Označavanje turista" Style="{StaticResource h1}"/>
+
+        <TextBlock Grid.Row="1" Text="{Binding TourDto.Tour.Name}" Style="{StaticResource h1.5}" Margin="0,10,0,0"/>
+
+        <Border Grid.Row="2" CornerRadius="25,25,25,25" Width="350" Height="197" Margin="0,10,0,0">
+            <Border.Background>
+                <ImageBrush Stretch="Fill" ImageSource="{Binding TourDto.Tour.Images[0]}"/>
+            </Border.Background>
+        </Border>
+
+        <ListView Grid.Row="3" SelectedIndex="{Binding SelectedTouristIndex}" ItemsSource="{Binding TourDto.ScheduledTour.Tourists}" Style="{StaticResource listView}" Margin="0,10,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="55"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding Name}" Margin="0,0,5,0" Style="{StaticResource h2}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Surname}" Style="{StaticResource h2}"/>
+                        <TextBlock Grid.Column="2" Text="," Margin="0,0,5,0" Style="{StaticResource h2}"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Age}" Style="{StaticResource h2}"/>
+
+                        <ComboBox Grid.Column="4" Width="100" ItemsSource="{Binding DataContext.KeyPointNames, RelativeSource={RelativeSource AncestorType=Page}}" 
+                                  SelectedValue="{Binding KeyPointName}" Style="{StaticResource comboBox}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="4" Content="Završi" Command="{Binding FinishMarkingTourists}" Style="{StaticResource button}"/>
     </Grid>
 </Page>

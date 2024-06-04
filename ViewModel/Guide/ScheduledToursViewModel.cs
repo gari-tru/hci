@@ -52,7 +52,7 @@ namespace BookingApp.ViewModel.Guide
         {
             _selectedTourDto = (TourDto)parameter;
             _selectedTourDto.Tour.KeyPoints[0].IsMarked = true;
-            _selectedTourDto.ScheduledTour.Status = Status.Live;
+            //_selectedTourDto.ScheduledTour.Status = Status.Live;
 
             TourDtos.Remove(_selectedTourDto);
             tourService.Update(_selectedTourDto.Tour);

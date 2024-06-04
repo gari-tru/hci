@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
+using BookingApp.Command;
 using BookingApp.Dto;
 
 namespace BookingApp.ViewModel.Guide
@@ -25,12 +26,14 @@ namespace BookingApp.ViewModel.Guide
         private readonly string didNotCome = "Nije došao/la";
 
         public Frame NavigationService { get; set; }
+        public RelayCommand FinishMarkingTourists { get; set; }
 
         public MarkTouristsViewModel(TourDto tourDto, Frame navigationService)
         {
             TourDto = tourDto;
-            NavigationService = navigationService;
             InitializeKeyPointNames();
+            NavigationService = navigationService;
+            FinishMarkingTourists = new RelayCommand(FinishMarkingTouristsExecute);
         }
 
         private void InitializeKeyPointNames()
@@ -39,10 +42,12 @@ namespace BookingApp.ViewModel.Guide
             KeyPointNames.Insert(0, didNotCome);
         }
 
-        public void FinishMarkingTourists()
+        public void FinishMarkingTouristsExecute(object parameter)
         {
             FilterPresentTourists();
             _scheduledTourService.Update(TourDto.ScheduledTour);
+            NavigationService.GoBack();
+            NavigationService.GoBack();
         }
 
         private void FilterPresentTourists()

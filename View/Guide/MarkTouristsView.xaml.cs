@@ -20,7 +20,7 @@ namespace BookingApp.View.Guide
 
         private void btnFinishMarkingTourists_Click(object sender, RoutedEventArgs e)
         {
-            markTouristsViewModel.FinishMarkingTourists();
+            //markTouristsViewModel.FinishMarkingTourists();
             Close();
         }
     }

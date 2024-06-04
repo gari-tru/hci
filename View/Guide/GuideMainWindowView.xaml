@@ -67,7 +67,9 @@
                 </Button>
             </Grid>
             <Grid Grid.Column="2">
-                <Image Source="{StaticResource stats}"/>
+                <Button Command="{Binding NavigateFinishedTours}" Style="{StaticResource transparentButton}">
+                    <Image Source="{StaticResource stats}"/>
+                </Button>
             </Grid>
             <Grid Grid.Column="3" HorizontalAlignment="Right">
                 <Image Source="{StaticResource bell}"/>

@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:BookingApp.View.Guide"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="LiveTourTrackingPage">
+      Title="LiveTourTrackingPage"
+      Style="{StaticResource page}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

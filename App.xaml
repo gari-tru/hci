@@ -18,6 +18,7 @@
             <BitmapImage x:Key="start" UriSource="Resources/Images/start.png"/>
             <BitmapImage x:Key="cancel" UriSource="Resources/Images/cancel.png"/>
             <BitmapImage x:Key="pin" UriSource="Resources/Images/pin.png"/>
+            <BitmapImage x:Key="pdf" UriSource="Resources/Images/pdf.png"/>
 
             <Style x:Key="page" TargetType="Page">
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
@@ -58,7 +59,7 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="#C8C8C8"/>
+                                    <Setter TargetName="border" Property="Background" Value="Gray"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -100,7 +101,92 @@
             </Setter>
             </Style>
 
-            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+            <Style x:Key="comboBox" TargetType="{x:Type ComboBox}">
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="OverridesDefaultStyle" Value="True"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBox}">
+                            <Grid>
+                                <ToggleButton Name="ToggleButton" Grid.Column="2" Focusable="False" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press">
+                                    <ToggleButton.Template>
+                                        <ControlTemplate>
+                                            <Border x:Name="Border" CornerRadius="10" BorderThickness="1" BorderBrush="#333" Background="#000">
+                                                <Path x:Name="Arrow" Fill="#666" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0" Data="M 0 0 L 4 4 L 8 0 Z"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
+                                </ToggleButton>
+                                <ContentPresenter Name="ContentSite" IsHitTestVisible="False" Margin="5,3,30,3" VerticalAlignment="Center">
+                                    <ContentPresenter.Content>
+                                        <TextBlock Text="{TemplateBinding SelectionBoxItem}" TextWrapping="Wrap" FontFamily="Microsoft Sans Serif" FontSize="11" Foreground="#FFFFFF"/>
+                                    </ContentPresenter.Content>
+                                </ContentPresenter>
+                                <TextBox x:Name="PART_EditableTextBox" Style="{x:Null}" IsReadOnly="{TemplateBinding IsReadOnly}" Visibility="Hidden"/>
+                                <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+                                    <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{TemplateBinding ActualWidth}">
+                                        <Border x:Name="DropDown" CornerRadius="10" BorderThickness="1" BorderBrush="#333" Background="#000" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained">
+                                                    <ItemsPresenter.Resources>
+                                                        <Style TargetType="{x:Type ComboBoxItem}">
+                                                            <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+                                                            <Setter Property="FontSize" Value="20"/>
+                                                            <Setter Property="Foreground" Value="#FFFFFF"/>
+                                                            <Setter Property="Template">
+                                                                <Setter.Value>
+                                                                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                                                                        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderThickness="0" Padding="5">
+                                                                            <ContentPresenter />
+                                                                        </Border>
+                                                                        <ControlTemplate.Triggers>
+                                                                            <Trigger Property="IsSelected" Value="True">
+                                                                                <Setter TargetName="Border" Property="Background" Value="#666" />
+                                                                            </Trigger>
+                                                                        </ControlTemplate.Triggers>
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Style>
+                                                    </ItemsPresenter.Resources>
+                                                </ItemsPresenter>
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Grid>
+                                </Popup>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsDropDownOpen" Value="True">
+                                    <Setter TargetName="ToggleButton" Property="Background" Value="#666"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="{x:Type ComboBoxItem}">
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Foreground" Value="#FFFFFF"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                            <Border x:Name="Border" Background="{TemplateBinding Background}" BorderThickness="0" Padding="5">
+                                <ContentPresenter VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="#666" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style x:Key="transparentButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
