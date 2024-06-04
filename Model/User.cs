@@ -1,9 +1,10 @@
-﻿using BookingApp.Serializer;
-using System;
+﻿using System;
+using BookingApp.Serializer;
 
 namespace BookingApp.Model
 {
-    public enum Role { 
+    public enum Role
+    {
         Owner,
         Guest,
         Guide,
@@ -14,7 +15,7 @@ namespace BookingApp.Model
     {
         public int Id { get; set; }
         public string Username { get; set; } = String.Empty;
-        public string Password { get; set; } = String.Empty;    
+        public string Password { get; set; } = String.Empty;
 
         public Role Role { get; set; }
 

@@ -1,12 +1,8 @@
-﻿using BookingApp.Model;
-using BookingApp.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using BookingApp.Model;
+using BookingApp.Service;
 
 namespace BookingApp.ViewModel.Tourist
 {
@@ -48,8 +44,8 @@ namespace BookingApp.ViewModel.Tourist
             }
         }
         private int _touristNumber;
-        public int TouristNumber 
-        { 
+        public int TouristNumber
+        {
             get => _touristNumber;
             set
             {
@@ -59,8 +55,8 @@ namespace BookingApp.ViewModel.Tourist
         }
 
         private List<Model.Tourist> _participants;
-        public List<Model.Tourist> Participants 
-        { 
+        public List<Model.Tourist> Participants
+        {
             get => _participants;
             set
             {
@@ -158,7 +154,7 @@ namespace BookingApp.ViewModel.Tourist
         }
         public void AddParticipant()
         {
-  
+
             if (_participantsCount < TouristNumber && !string.IsNullOrWhiteSpace(ParticipantName) && !string.IsNullOrWhiteSpace(ParticipantSurname) && ParticipantAge > 0)
             {
                 Participants.Add(new Model.Tourist(user.Id, ParticipantName, ParticipantSurname, ParticipantAge, "", false));
@@ -167,7 +163,7 @@ namespace BookingApp.ViewModel.Tourist
                 _participantsCount++;
                 MessageBox.Show("Participant added successfully!");
             }
-            else if(_participantsCount >= TouristNumber)
+            else if (_participantsCount >= TouristNumber)
             {
                 MessageBox.Show("You have reached the maximum number of participants.");
             }
@@ -175,7 +171,7 @@ namespace BookingApp.ViewModel.Tourist
             {
                 MessageBox.Show("Please fill all fields correctly.");
             }
-     
+
         }
 
         private void ClearRequestFields()

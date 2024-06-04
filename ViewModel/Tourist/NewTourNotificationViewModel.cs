@@ -1,17 +1,12 @@
-﻿using BookingApp.Dto;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
 using BookingApp.Model;
 using BookingApp.Service;
 using CsvHelper;
 using CsvHelper.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Formats.Asn1;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace BookingApp.ViewModel.Tourist
 {
@@ -71,7 +66,7 @@ namespace BookingApp.ViewModel.Tourist
                     {
                         Id = csv.GetField<int>(0),
                         Name = csv.GetField<string>(1),
-                        Location = city + ", "+ country,
+                        Location = city + ", " + country,
                         Description = null,
                         Language = csv.GetField<string>(5),
                         MaxTourists = csv.GetField<int>(6),

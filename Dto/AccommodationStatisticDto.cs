@@ -1,9 +1,4 @@
 ﻿using BookingApp.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookingApp.Dto
 {
@@ -119,7 +114,7 @@ namespace BookingApp.Dto
             }
         }
 
-   
+
 
         public AccommodationStatisticDto(int accommodationId, string accommodationName, int numberOfReservations, (string City, string Country) location)
         {
@@ -129,7 +124,7 @@ namespace BookingApp.Dto
             Location = location;
         }
 
-        public AccommodationStatisticDto(int accommodationId, string accommodationName, int year , int numberOfReservations, int numberOfPostponded, int numberOfSugestions, int numberOfRejected)
+        public AccommodationStatisticDto(int accommodationId, string accommodationName, int year, int numberOfReservations, int numberOfPostponded, int numberOfSugestions, int numberOfRejected)
         {
             AccommodationId = accommodationId;
             AccommodationName = accommodationName;
@@ -140,7 +135,7 @@ namespace BookingApp.Dto
             NumberOfRejections = numberOfRejected;
         }
 
-        public AccommodationStatisticDto(int accommodationId, string accommodationName, int year,int month, int numberOfReservations, int numberOfPostponded,int numberOfSugestions, int numberOfRejections)
+        public AccommodationStatisticDto(int accommodationId, string accommodationName, int year, int month, int numberOfReservations, int numberOfPostponded, int numberOfSugestions, int numberOfRejections)
         {
             AccommodationId = accommodationId;
             AccommodationName = accommodationName;

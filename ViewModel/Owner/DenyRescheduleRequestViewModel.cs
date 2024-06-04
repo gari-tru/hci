@@ -1,13 +1,8 @@
-﻿using BookingApp.Command;
+﻿using System.Windows.Navigation;
+using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Model;
 using BookingApp.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace BookingApp.ViewModel.Owner
 {

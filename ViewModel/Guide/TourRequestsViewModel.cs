@@ -1,9 +1,9 @@
-﻿using BookingApp.Model;
-using BookingApp.Service;
-using BookingApp.View.Guide;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using BookingApp.Model;
+using BookingApp.Service;
+using BookingApp.View.Guide;
 
 namespace BookingApp.ViewModel.Guide
 {
@@ -76,7 +76,7 @@ namespace BookingApp.ViewModel.Guide
         private TourRequestService tourRequestService = new TourRequestService();
         private LanguageService languageService = new LanguageService();
         private LocationService locationService = new LocationService();
-        
+
         public List<string> Languages { get; }
         public List<string> Locations { get; }
 
@@ -115,7 +115,7 @@ namespace BookingApp.ViewModel.Guide
             tourRequestService.Update(tourRequest);
             TourRequests.Remove(tourRequest);
 
-            if(status == TourRequestStatus.Accepted)
+            if (status == TourRequestStatus.Accepted)
             {
                 CreateTourView createTourView = new CreateTourView(tourRequest, userId);
                 createTourView.ShowDialog();

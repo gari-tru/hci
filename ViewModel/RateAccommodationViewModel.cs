@@ -1,12 +1,10 @@
-﻿using BookingApp.Converter;
-using BookingApp.Model;
-using BookingApp.Service;
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Data;
+using BookingApp.Model;
+using BookingApp.Service;
+using Microsoft.Win32;
 
 namespace BookingApp.ViewModel
 {

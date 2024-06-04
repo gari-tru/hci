@@ -1,17 +1,12 @@
-﻿using BookingApp.Command;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Navigation;
+using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Model;
 using BookingApp.Service;
-using BookingApp.Utils;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Navigation;
 
 namespace BookingApp.ViewModel.Owner
 {
@@ -57,7 +52,7 @@ namespace BookingApp.ViewModel.Owner
                 return;
             }
             GetAvailableDateRanges(Renovation.StartDate, Renovation.EndDate, Renovation.Lasting);
-            ValidateAvailableDates();  
+            ValidateAvailableDates();
         }
         public void ValidateAvailableDates()
         {
@@ -76,7 +71,7 @@ namespace BookingApp.ViewModel.Owner
         }
         public void ScheduleRenovationExecute(object parameter)
         {
-            if(Renovation.Description == string.Empty)
+            if (Renovation.Description == string.Empty)
             {
                 MessageBox.Show("Please add a description!");
                 return;
@@ -118,7 +113,7 @@ namespace BookingApp.ViewModel.Owner
         {
             for (int i = 0; i < range; i++)
             {
-                if(date.AddDays(range-1) > Renovation.EndDate)
+                if (date.AddDays(range - 1) > Renovation.EndDate)
                 {
                     return false;
                 }
@@ -129,5 +124,5 @@ namespace BookingApp.ViewModel.Owner
             }
             return true;
         }
-     }
+    }
 }

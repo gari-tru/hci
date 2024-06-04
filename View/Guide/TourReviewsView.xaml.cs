@@ -21,7 +21,7 @@ namespace BookingApp.View.Guide
         }
 
         private void btnReport_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             tourReviewsViewModel.ReportReview((TourReview)((Button)sender).CommandParameter);
         }
     }

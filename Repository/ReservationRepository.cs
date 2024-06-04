@@ -1,12 +1,9 @@
-using BookingApp.Model;
-using BookingApp.Repository.Interface;
-using BookingApp.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using BookingApp.Model;
+using BookingApp.Repository.Interface;
+using BookingApp.Serializer;
 
 
 
@@ -156,12 +153,12 @@ namespace BookingApp.Repository
             LoadReservations();
             return _reservations.FindAll(r => r.Accommodation.Id == accommodationId).GroupBy(r => r.ReservedDate.Item1.Year).Select(r => new { Year = r.Key, Count = r.Count() }).GroupBy(r => r.Year, r => r.Count);
         }
-        public List<Tuple<DateTime,DateTime>> GetReservedDatesByAccommodation(int accommodationId)
+        public List<Tuple<DateTime, DateTime>> GetReservedDatesByAccommodation(int accommodationId)
         {
             LoadReservations();
             return _reservations.FindAll(r => r.Accommodation.Id == accommodationId).Select(r => r.ReservedDate).ToList();
         }
-        
+
         public List<int> GetYearsByAccommodation(int accommodationId)
         {
             LoadReservations();

@@ -1,11 +1,5 @@
-﻿using BookingApp.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using BookingApp.Serializer;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookingApp.Model
 {

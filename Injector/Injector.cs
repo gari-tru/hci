@@ -1,7 +1,7 @@
-﻿using BookingApp.Repository;
-using BookingApp.Repository.Interface;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BookingApp.Repository;
+using BookingApp.Repository.Interface;
 
 public class Injector
 {

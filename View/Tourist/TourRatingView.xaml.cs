@@ -1,6 +1,6 @@
-﻿using BookingApp.Model;
+﻿using System.Windows;
+using BookingApp.Model;
 using BookingApp.ViewModel.Tourist;
-using System.Windows;
 
 namespace BookingApp.View.Tourist
 {

@@ -1,12 +1,12 @@
-﻿using BookingApp.Model;
-using BookingApp.Service;
-using BookingApp.View;
-using BookingApp.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using BookingApp.Model;
+using BookingApp.Service;
+using BookingApp.Utils;
+using BookingApp.View;
 
 namespace BookingApp.ViewModel
 {
@@ -142,7 +142,7 @@ namespace BookingApp.ViewModel
                 HandleUnavailableDates();
                 return;
             }
-            
+
             ReserveSelectedDates(availableDates);
 
         }

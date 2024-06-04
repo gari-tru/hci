@@ -1,11 +1,11 @@
-﻿using BookingApp.Model;
-using BookingApp.View;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using BookingApp.Model;
+using BookingApp.View;
 
 namespace BookingApp.UserControls
 {
@@ -131,7 +131,7 @@ namespace BookingApp.UserControls
 
                 await newViewInstance.Dispatcher.InvokeAsync(async () =>
                 {
-                    await Task.Delay(100); 
+                    await Task.Delay(100);
                 }, System.Windows.Threading.DispatcherPriority.ContextIdle);
             }
         }
@@ -146,7 +146,7 @@ namespace BookingApp.UserControls
                 // Wait for the new window to open
                 await newViewInstance.Dispatcher.InvokeAsync(async () =>
                 {
-                    await Task.Delay(100); 
+                    await Task.Delay(100);
                 }, System.Windows.Threading.DispatcherPriority.ContextIdle);
             }
         }
@@ -184,7 +184,7 @@ namespace BookingApp.UserControls
 
         public void OpenRescheduleReservationView(object sender, RoutedEventArgs e, Reservation selectedReservation)
         {
-            OpenView<RescheduleReservationView>(typeof(RescheduleReservationView), selectedReservation,  User, sender, e);
+            OpenView<RescheduleReservationView>(typeof(RescheduleReservationView), selectedReservation, User, sender, e);
         }
 
         public void OpenOwnerRatingsView(object sender, RoutedEventArgs e)

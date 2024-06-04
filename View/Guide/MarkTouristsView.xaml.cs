@@ -14,10 +14,10 @@ namespace BookingApp.View.Guide
         public MarkTouristsView(TourDto tourDto)
         {
             InitializeComponent();
-            markTouristsViewModel = new MarkTouristsViewModel(tourDto);
+            //markTouristsViewModel = new MarkTouristsViewModel(tourDto);
             DataContext = markTouristsViewModel;
         }
-        
+
         private void btnFinishMarkingTourists_Click(object sender, RoutedEventArgs e)
         {
             markTouristsViewModel.FinishMarkingTourists();

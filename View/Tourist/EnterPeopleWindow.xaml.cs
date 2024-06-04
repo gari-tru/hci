@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
-using BookingApp.Model;
 using BookingApp.Dto;
+using BookingApp.Model;
 using BookingApp.ViewModel.Tourist;
 
 namespace BookingApp.View.Tourist

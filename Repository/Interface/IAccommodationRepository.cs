@@ -1,9 +1,5 @@
-﻿using BookingApp.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using BookingApp.Model;
 
 namespace BookingApp.Repository.Interface
 {
@@ -17,7 +13,7 @@ namespace BookingApp.Repository.Interface
         List<Accommodation> FindByCountry(string country);
         List<Accommodation> GetAll();
         List<Accommodation> GetAllByOwner(int ownerId);
-        bool CheckIfExist(string name, (string City, string Country)location, AccommodationType type);
+        bool CheckIfExist(string name, (string City, string Country) location, AccommodationType type);
         Accommodation Save(Accommodation accommodation);
         Accommodation FindById(int id);
         int NextId();

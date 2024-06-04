@@ -32,7 +32,7 @@ public class TourService
     }
 
     public void NotifyNewTour(List<Tour> tours)
-    {         
+    {
         _tourRepository.NotifyNewTour(tours);
     }
 

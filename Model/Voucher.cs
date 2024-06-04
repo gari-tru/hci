@@ -11,7 +11,7 @@ namespace BookingApp.Model
         public int TouristId { get; set; }
         public DateTime Expiration { get; set; }
 
-        public Voucher() { } 
+        public Voucher() { }
 
         public Voucher(int touristId, DateTime expiration)
         {

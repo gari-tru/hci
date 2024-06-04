@@ -1,7 +1,6 @@
-﻿using BookingApp.Model;
+﻿using System.Collections.Generic;
+using BookingApp.Model;
 using BookingApp.Repository.Interface;
-using System;
-using System.Collections.Generic;
 
 namespace BookingApp.Service
 {
@@ -63,7 +62,7 @@ namespace BookingApp.Service
         {
             return _accommodationRepository.FindById(id);
         }
-        
+
         public List<Accommodation> GetAllByOwner(int ownerId)
         {
             return _accommodationRepository.GetAllByOwner(ownerId);

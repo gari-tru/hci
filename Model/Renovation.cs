@@ -1,10 +1,6 @@
-﻿using BookingApp.Repository;
+﻿using System;
+using BookingApp.Repository;
 using BookingApp.Serializer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookingApp.Model
 {
@@ -23,7 +19,7 @@ namespace BookingApp.Model
         public DateTime EndDate { get; set; }
         public string Description { get; set; }
         public int Lasting { get; set; }
-        public RenovationStatus Status { get; set; }   
+        public RenovationStatus Status { get; set; }
 
         public Renovation()
         {
@@ -51,7 +47,7 @@ namespace BookingApp.Model
             OwnerId.ToString(),
             Accommodation.Id.ToString(),
             StartDate.ToShortDateString(),
-            EndDate.ToShortDateString(),    
+            EndDate.ToShortDateString(),
             Description,
             Lasting.ToString(),
             Status.ToString()

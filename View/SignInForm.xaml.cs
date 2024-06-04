@@ -5,7 +5,6 @@ using BookingApp.Model;
 using BookingApp.Repository;
 using BookingApp.View.Guide;
 using BookingApp.View.Tourist;
-using BookingApp.View;
 
 namespace BookingApp.View
 {

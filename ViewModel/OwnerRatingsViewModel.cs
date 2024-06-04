@@ -1,9 +1,9 @@
-﻿using BookingApp.Dto;
-using BookingApp.Model;
-using BookingApp.Service;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using BookingApp.Dto;
+using BookingApp.Model;
+using BookingApp.Service;
 
 namespace BookingApp.ViewModel
 {

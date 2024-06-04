@@ -1,12 +1,8 @@
-﻿using BookingApp.Model;
-using BookingApp.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using BookingApp.Model;
+using BookingApp.Service;
 
 namespace BookingApp.ViewModel.Tourist
 {
@@ -182,7 +178,7 @@ namespace BookingApp.ViewModel.Tourist
         public void CreateComplexTourRequest()
         {
             if (_requestsCount >= RequestNumber)
-            { 
+            {
                 ComplexTourRequest ComplexRequest = new ComplexTourRequest(user.Id, ComplexTourRequest, TourRequestStatus.Waiting);
                 _complexTourRequestService.Save(ComplexRequest);
                 TouristNumber = 0;
@@ -192,7 +188,7 @@ namespace BookingApp.ViewModel.Tourist
                 _requestsCount = 0;
                 IsParticipantInputEnabled = true;
                 MessageBox.Show("Complex tour request created successfully!");
-            }   
+            }
             else
                 MessageBox.Show("You have not reached the maximum number of requests.");
         }

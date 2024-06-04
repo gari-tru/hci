@@ -1,5 +1,5 @@
-﻿    using BookingApp.Serializer;
-using System;
+﻿using System;
+using BookingApp.Serializer;
 
 namespace BookingApp.Model
 {

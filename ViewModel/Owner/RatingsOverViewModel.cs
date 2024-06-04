@@ -1,12 +1,11 @@
-﻿using BookingApp.Model;
-using BookingApp.Repository;
-using BookingApp.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using BookingApp.Model;
+using BookingApp.Repository;
+using BookingApp.Service;
 
 namespace BookingApp.ViewModel.Owner
 {

@@ -1,8 +1,7 @@
-﻿using BookingApp.Model;
-using BookingApp.Dto;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using BookingApp.Dto;
+using BookingApp.Model;
 
 namespace BookingApp.ViewModel.Tourist
 {

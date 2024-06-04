@@ -107,7 +107,7 @@ namespace BookingApp.ViewModel.Guide
             {
                 CalculateStatistics(Location);
             }
-            else if(Languages.Contains(Language))
+            else if (Languages.Contains(Language))
             {
                 CalculateStatistics(Language);
             }
@@ -125,12 +125,12 @@ namespace BookingApp.ViewModel.Guide
         public void CreateTour(string label)
         {
             TourRequest tourRequest = new TourRequest();
-            
-            if(label == "location")
+
+            if (label == "location")
             {
                 tourRequest.Location = MostWantedLocation;
             }
-            else if(label == "language")
+            else if (label == "language")
             {
                 tourRequest.Language = MostWantedLanguage;
             }

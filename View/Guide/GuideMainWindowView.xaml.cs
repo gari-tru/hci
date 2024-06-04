@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using BookingApp.Command;
 using BookingApp.ViewModel.Guide;
 
 namespace BookingApp.View.Guide

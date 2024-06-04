@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using BookingApp.Model;
 using System.Windows.Controls;
+using BookingApp.Model;
 using BookingApp.ViewModel.Guide;
-using BookingApp.ViewModel.Tourist;
 
 namespace BookingApp.View.Guide
 {

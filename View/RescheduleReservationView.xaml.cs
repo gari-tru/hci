@@ -1,7 +1,7 @@
-﻿using BookingApp.Model;
-using BookingApp.ViewModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
+using BookingApp.Model;
+using BookingApp.ViewModel;
 
 namespace BookingApp.View
 {
@@ -35,7 +35,7 @@ namespace BookingApp.View
 
         private void RescheduleReservation(object sender, RoutedEventArgs e)
         {
-           if( _viewModel.RescheduleReservation())
+            if (_viewModel.RescheduleReservation())
             {
                 titleBar.OpenManageReservationsView(sender, e);
             }

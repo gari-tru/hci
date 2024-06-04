@@ -1,10 +1,6 @@
-﻿using BookingApp.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BookingApp.ViewModel;
 
 namespace BookingApp.Dto
 {
@@ -19,7 +15,7 @@ namespace BookingApp.Dto
         private ObservableCollection<string> _guestImages;
         private string _guestName;
         private string _accommodationName;
-        public AccommodationRatingDto(int id ,int cleanliness, int ownerCorrectness, string comment, string guestName, string accommodationName, ObservableCollection<string> guestImages)
+        public AccommodationRatingDto(int id, int cleanliness, int ownerCorrectness, string comment, string guestName, string accommodationName, ObservableCollection<string> guestImages)
         {
             _id = id;
             _cleanliness = cleanliness;
@@ -51,7 +47,7 @@ namespace BookingApp.Dto
         private void UpdateCleanlinessImages()
         {
             _cleanlinessImages = new ObservableCollection<string>(Enumerable.Repeat("../Resources/Images/solidStar.png", _cleanliness));
-            for(int i = _cleanliness; i < 5; i++)
+            for (int i = _cleanliness; i < 5; i++)
             {
                 _cleanlinessImages.Add("/Resources/Images/emptyStar.png");
             }

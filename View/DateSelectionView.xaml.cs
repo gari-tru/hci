@@ -1,8 +1,7 @@
-﻿using BookingApp.Model;
-using BookingApp.ViewModel;
+﻿using System;
 using System.Collections.Generic;
-using System;
 using System.Windows;
+using BookingApp.ViewModel;
 
 namespace BookingApp.View
 {

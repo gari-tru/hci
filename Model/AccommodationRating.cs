@@ -1,9 +1,8 @@
-﻿using BookingApp.Repository;
-using BookingApp.Serializer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
+using BookingApp.Repository;
+using BookingApp.Serializer;
 
 
 namespace BookingApp.Model
@@ -87,7 +86,7 @@ namespace BookingApp.Model
         public string[] ToCSV()
         {
             string guestImagesString = string.Join("+", GuestImages);
-            string[] csvValues = { Id.ToString(), ReservationId.ToString(), Guest?.Id.ToString(), Accommodation?.Id.ToString() ,Cleanliness.ToString(), OwnerCorrectness.ToString(), Comment.ToString(), ((int?)RenovationLevel).ToString() ?? "", guestImagesString, SuggestionDate.ToShortDateString()};
+            string[] csvValues = { Id.ToString(), ReservationId.ToString(), Guest?.Id.ToString(), Accommodation?.Id.ToString(), Cleanliness.ToString(), OwnerCorrectness.ToString(), Comment.ToString(), ((int?)RenovationLevel).ToString() ?? "", guestImagesString, SuggestionDate.ToShortDateString() };
             return csvValues;
         }
 

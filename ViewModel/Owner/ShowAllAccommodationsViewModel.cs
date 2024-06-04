@@ -1,14 +1,10 @@
-﻿using BookingApp.Command;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Navigation;
+using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Service;
 using BookingApp.View;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
 
 namespace BookingApp.ViewModel.Owner
 {
@@ -18,7 +14,7 @@ namespace BookingApp.ViewModel.Owner
         public ObservableCollection<AccommodationDto> Accommodations { get; set; }
         public RelayCommand ShowScheduleRenovation { get; set; }
         public NavigationService NavService { get; set; }
-        private int ownerId { get; set;}
+        private int ownerId { get; set; }
         public ShowAllAccommodationsViewModel(int currentUserId, NavigationService navService)
         {
             _accommodationService = new AccommodationService();

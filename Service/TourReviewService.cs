@@ -1,6 +1,6 @@
-﻿using BookingApp.Model;
+﻿using System.Collections.Generic;
+using BookingApp.Model;
 using BookingApp.Repository.Interface;
-using System.Collections.Generic;
 
 namespace BookingApp.Service
 {

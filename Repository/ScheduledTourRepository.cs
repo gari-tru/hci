@@ -80,7 +80,7 @@ namespace BookingApp.Repository
         }
 
         public List<Tourist> GetAllTouristsByIsMarkable(ScheduledTour scheduledTour)
-        {             
+        {
             _scheduledTour = GetById(scheduledTour.Id);
             return _scheduledTour.Tourists.Where(t => t.IsMarkable).ToList();
         }

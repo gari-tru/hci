@@ -1,9 +1,9 @@
-using System.Windows;
-using BookingApp.Model;
-using BookingApp.Dto;
-using BookingApp.ViewModel.Tourist;
-using System.Windows.Input;
 using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Input;
+using BookingApp.Dto;
+using BookingApp.Model;
+using BookingApp.ViewModel.Tourist;
 
 namespace BookingApp.View.Tourist
 {

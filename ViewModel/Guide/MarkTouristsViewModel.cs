@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using BookingApp.Dto;
 
 namespace BookingApp.ViewModel.Guide
@@ -23,9 +24,12 @@ namespace BookingApp.ViewModel.Guide
 
         private readonly string didNotCome = "Nije došao/la";
 
-        public MarkTouristsViewModel(TourDto tourDto)
+        public Frame NavigationService { get; set; }
+
+        public MarkTouristsViewModel(TourDto tourDto, Frame navigationService)
         {
             TourDto = tourDto;
+            NavigationService = navigationService;
             InitializeKeyPointNames();
         }
 

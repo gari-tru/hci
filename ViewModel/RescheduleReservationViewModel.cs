@@ -1,13 +1,7 @@
-﻿using BookingApp.Model;
-using BookingApp.Service;
-using BookingApp.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
-using System.Windows.Media;
+using BookingApp.Model;
+using BookingApp.Service;
 
 namespace BookingApp.ViewModel
 {
@@ -52,7 +46,7 @@ namespace BookingApp.ViewModel
         }
 
         private DateTime _endDate;
-        public DateTime EndDate 
+        public DateTime EndDate
         {
             get { return _endDate; }
             set
@@ -142,7 +136,8 @@ namespace BookingApp.ViewModel
                 () => { bool isInvalid = StartDate > EndDate; return isInvalid ? "Krajnji datum ne sme biti pre početnog datuma." : null; },
                 //() => { bool isInvalid = EndDate <= SelectedReservation.ReservedDate.Item2; return isInvalid ? "Nova rezervacija mora biti posle stare rezervacije." : null; },
                 () => { bool isInvalid = StartDate <= DateTime.Today; return isInvalid ? "Početni datum ne može biti u prošlosti." : null; },
-                () => {
+                () =>
+                {
                     int numberOfDays = (EndDate - StartDate).Days + 1;
                     bool isInvalid = numberOfDays < SelectedAccommodation.MinReservationDays;
                     return isInvalid ? $"Minimalni broj dana rezervacije je {SelectedAccommodation.MinReservationDays}." : null;

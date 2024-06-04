@@ -1,16 +1,12 @@
-﻿using BookingApp.Command;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Threading;
+using BookingApp.Command;
 using BookingApp.Model;
 using BookingApp.Repository;
 using BookingApp.Service;
 using BookingApp.View;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace BookingApp.ViewModel.Owner
 {
@@ -110,7 +106,7 @@ namespace BookingApp.ViewModel.Owner
 
         public void ShowAllAccommodationsExecute(object parameter)
         {
-            ShowAllAccommodationsVIew showAllAccommodationsVIew = new ShowAllAccommodationsVIew(_currentUser.Id ,_mainFrame.NavigationService);
+            ShowAllAccommodationsVIew showAllAccommodationsVIew = new ShowAllAccommodationsVIew(_currentUser.Id, _mainFrame.NavigationService);
             _mainFrame.NavigationService.Navigate(showAllAccommodationsVIew);
         }
 

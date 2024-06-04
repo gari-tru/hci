@@ -130,9 +130,9 @@ namespace BookingApp.ViewModel.Guide
                 }
             }
 
-            if(tourRequest != null)
+            if (tourRequest != null)
             {
-                if(Convert.ToDateTime(Start) < tourRequest.Start || Convert.ToDateTime(Start).AddHours(Duration) > tourRequest.End)
+                if (Convert.ToDateTime(Start) < tourRequest.Start || Convert.ToDateTime(Start).AddHours(Duration) > tourRequest.End)
                 {
                     return false;
                 }
@@ -194,7 +194,7 @@ namespace BookingApp.ViewModel.Guide
                 scheduledTour.TourId = tour.Id;
                 scheduledTourService.Save(scheduledTour);
 
-                if(tourRequest != null)
+                if (tourRequest != null)
                 {
                     string notification = $"{tourRequest.Id}|{Start}";
                     using (StreamWriter writer = File.AppendText(_notificationsPath))
@@ -234,7 +234,7 @@ namespace BookingApp.ViewModel.Guide
                 FreeSpots = MaxTourists,
             };
 
-            if(tourRequest != null)
+            if (tourRequest != null)
             {
                 scheduledTour.Tourists = tourRequest.Tourists;
                 scheduledTour.FreeSpots = 0;

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Model;
+using BookingApp.View.Guide;
 
 namespace BookingApp.ViewModel.Guide
 {

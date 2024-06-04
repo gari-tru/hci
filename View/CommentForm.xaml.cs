@@ -1,9 +1,9 @@
-﻿using BookingApp.Model;
-using BookingApp.Repository;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using BookingApp.Model;
+using BookingApp.Repository;
 
 namespace BookingApp.View
 {
@@ -38,7 +38,7 @@ namespace BookingApp.View
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }        
+        }
 
         public CommentForm(User user)
         {
@@ -75,7 +75,7 @@ namespace BookingApp.View
         private void SaveComment(object sender, RoutedEventArgs e)
         {
 
-            if(SelectedComment != null)
+            if (SelectedComment != null)
             {
                 SelectedComment.Text = Text;
                 SelectedComment.CreationTime = DateTime.Now;
@@ -87,20 +87,20 @@ namespace BookingApp.View
                     CommentsOverview.Comments.Remove(SelectedComment);
                     CommentsOverview.Comments.Insert(index, updatedComment);
                 }
-            } 
+            }
             else
             {
                 Comment newComment = new Comment(DateTime.Now, Text, currentUser);
                 Comment savedComment = _repository.Save(newComment);
                 CommentsOverview.Comments.Add(savedComment);
             }
-            
+
             Close();
         }
 
-        private void Cancel(object sender, RoutedEventArgs e) 
-        { 
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
             Close();
-        } 
+        }
     }
 }

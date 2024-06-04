@@ -1,8 +1,8 @@
-﻿using BookingApp.Serializer;
-using BookingApp.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using BookingApp.Serializer;
+using BookingApp.Service;
 
 
 namespace BookingApp.Model
@@ -39,7 +39,7 @@ namespace BookingApp.Model
 
 
 
-        public Accommodation(string name,int ownerId, (string City, string Country) location, AccommodationType type, int minReservationDays, List<string> pictures, int maxGuests, int cancellationDays = 1)
+        public Accommodation(string name, int ownerId, (string City, string Country) location, AccommodationType type, int minReservationDays, List<string> pictures, int maxGuests, int cancellationDays = 1)
         {
             Name = name;
             OwnerId = ownerId;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using BookingApp.Model;
 using BookingApp.Repository.Interface;
 
@@ -46,7 +45,7 @@ namespace BookingApp.Service
         {
             return _reservationRepository.Update(reservation);
         }
-      
+
 
         public int NextId()
         {
@@ -77,7 +76,7 @@ namespace BookingApp.Service
         {
             return _reservationRepository.GetReservationById(id);
         }
-        
+
         public int CountReservationsByAccommodation(int accommodationId)
         {
             return _reservationRepository.CountReservationsByAccommodation(accommodationId);

@@ -1,9 +1,9 @@
-﻿using BookingApp.Model;
+﻿using System;
 using System.Collections.Generic;
-using BookingApp.Serializer;
-using BookingApp.Repository.Interface;
 using System.Linq;
-using System;
+using BookingApp.Model;
+using BookingApp.Repository.Interface;
+using BookingApp.Serializer;
 
 namespace BookingApp.Repository
 {

@@ -1,6 +1,4 @@
 ﻿using BookingApp.Model;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace BookingApp.ViewModel
 {

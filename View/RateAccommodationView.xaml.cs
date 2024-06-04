@@ -1,8 +1,8 @@
-﻿using BookingApp.Model;
+﻿using System.Windows;
+using System.Windows.Input;
+using BookingApp.Model;
 using BookingApp.Service;
 using BookingApp.ViewModel;
-using System.Windows;
-using System.Windows.Input;
 
 namespace BookingApp.View
 {
@@ -51,7 +51,7 @@ namespace BookingApp.View
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            titleBar.OpenManageReservationsView(sender , e);
+            titleBar.OpenManageReservationsView(sender, e);
         }
 
         private void BrowseImages_Click(object sender, RoutedEventArgs e)

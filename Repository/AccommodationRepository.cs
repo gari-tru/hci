@@ -1,9 +1,9 @@
-using BookingApp.Model;
-using BookingApp.Repository.Interface;
-using BookingApp.Serializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BookingApp.Model;
+using BookingApp.Repository.Interface;
+using BookingApp.Serializer;
 
 
 namespace BookingApp.Repository
@@ -73,7 +73,7 @@ namespace BookingApp.Repository
             return _accommodations;
         }
 
-        public bool CheckIfExist(string name, (string City, string Country)location, AccommodationType type)
+        public bool CheckIfExist(string name, (string City, string Country) location, AccommodationType type)
         {
             LoadAccommodations();
             return _accommodations.Exists(a => a.Name == name && a.Location.City == location.City && a.Location.Country == location.Country && a.Type == type);

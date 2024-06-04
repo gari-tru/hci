@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:BookingApp.View.Guide"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MarkTouristsPage">
-
+      Title="MarkTouristsPage"
+      Style="{StaticResource page}">
     <Grid>
-        
+        <TextBlock>cao</TextBlock>
     </Grid>
 </Page>

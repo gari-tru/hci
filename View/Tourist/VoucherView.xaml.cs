@@ -1,8 +1,8 @@
-﻿using BookingApp.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
-using BookingApp.Service;
 using BookingApp.Dto;
+using BookingApp.Model;
+using BookingApp.Service;
 using BookingApp.ViewModel.Tourist;
 
 namespace BookingApp.View.Tourist
@@ -46,7 +46,7 @@ namespace BookingApp.View.Tourist
 
             _enterPeopleViewModel.Voucher = voucherViewModel.SelectedVoucher;
             _enterPeopleViewModel.MakeReservation();
-                                  
+
             VoucherDto selectedDto = voucherViewModel.SelectedVoucher;
             int id = user.Id;
             Voucher selectedVoucher = voucherViewModel.FindVoucherFromDto(user.Id, selectedDto.Expiration);

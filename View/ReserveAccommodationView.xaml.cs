@@ -1,10 +1,7 @@
-﻿using BookingApp.Model;
-using BookingApp.ViewModel;
-using System.Collections.Generic;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
+using BookingApp.Model;
+using BookingApp.ViewModel;
 
 namespace BookingApp.View
 {

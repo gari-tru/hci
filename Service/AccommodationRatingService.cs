@@ -1,11 +1,6 @@
-﻿using BookingApp.Repository;
-using BookingApp.Repository.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BookingApp.Model;
+using BookingApp.Repository.Interface;
 
 namespace BookingApp.Service
 {
@@ -62,7 +57,7 @@ namespace BookingApp.Service
         {
             return _accommodationRatingRepository.GetAverageRatingByOwner(ownerId) / 2;
         }
-        
+
         public AccommodationRating GetById(int id)
         {
             return _accommodationRatingRepository.FindById(id);

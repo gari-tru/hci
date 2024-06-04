@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using BookingApp.Dto;
 using System.Windows.Controls;
+using BookingApp.Dto;
 using BookingApp.ViewModel.Guide;
 
 namespace BookingApp.View.Guide
