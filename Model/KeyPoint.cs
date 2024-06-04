@@ -1,11 +1,25 @@
 ﻿using System;
+using BookingApp.ViewModel;
 
 namespace BookingApp.Model
 {
-    public class KeyPoint
+    public class KeyPoint : ViewModelBase
     {
         public string Name { get; set; }
-        public bool IsMarked { get; set; }
+
+        private bool _isMarked;
+        public bool IsMarked
+        {
+            get => _isMarked;
+            set
+            {
+                if (_isMarked != value)
+                {
+                    _isMarked = value;
+                    OnPropertyChanged(nameof(IsMarked));
+                }
+            }
+        }
 
         public KeyPoint() { }
 

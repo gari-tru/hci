@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Controls;
+using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Model;
 
@@ -42,7 +43,7 @@ namespace BookingApp.ViewModel.Guide
 
             if (IsTourFinished(value))
             {
-                FinishTour();
+                FinishTourExecute(null);
             }
         }
         private bool IsTourFinished(int value) => value == TourDto.Tour.KeyPoints.Count - 1;
@@ -51,20 +52,21 @@ namespace BookingApp.ViewModel.Guide
         private ScheduledTourService scheduledTourService = new ScheduledTourService();
 
         public Frame NavigationService { get; set; }
+        public RelayCommand FinishTour { get; set; }
 
         public LiveTourTrackingViewModel(TourDto tourDto, Frame navigationService)
         {
             TourDto = tourDto;
             NavigationService = navigationService;
+            FinishTour = new RelayCommand(FinishTourExecute);
         }
 
-        public void FinishTour()
+        public void FinishTourExecute(object parameter)
         {
             UpdateTourDto();
             tourService.Update(TourDto.Tour);
             scheduledTourService.Update(TourDto.ScheduledTour);
-
-            IsLiveTourTrackingFinished?.Invoke(this, TourDto);
+            NavigationService.Navigate(new MarkTouristsPage(TourDto, NavigationService));
         }
 
         private void UpdateTourDto()

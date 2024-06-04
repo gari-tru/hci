@@ -17,6 +17,7 @@
             <BitmapImage x:Key="bell" UriSource="Resources/Images/bell.png"/>
             <BitmapImage x:Key="start" UriSource="Resources/Images/start.png"/>
             <BitmapImage x:Key="cancel" UriSource="Resources/Images/cancel.png"/>
+            <BitmapImage x:Key="pin" UriSource="Resources/Images/pin.png"/>
 
             <Style x:Key="page" TargetType="Page">
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
@@ -49,7 +50,20 @@
                 <Setter Property="Background" Value="Black"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="FontSize" Value="20"/>
-                
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#C8C8C8"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
                 <Style.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="20"/>
@@ -85,6 +99,8 @@
                 </Setter.Value>
             </Setter>
             </Style>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
             <Style x:Key="transparentButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>

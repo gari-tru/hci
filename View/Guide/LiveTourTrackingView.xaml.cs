@@ -24,7 +24,7 @@ namespace BookingApp.View.Guide
 
         private void btnFinishTour_Click(object sender, RoutedEventArgs e)
         {
-            liveTourTrackingViewModel.FinishTour();
+            //liveTourTrackingViewModel.FinishTour();
         }
     }
 }
