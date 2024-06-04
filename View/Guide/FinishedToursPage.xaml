@@ -52,7 +52,7 @@
                                 </Ellipse.Fill>
                             </Ellipse>
                         </Grid>
-                        <WrapPanel Orientation="Vertical" Width="208">
+                        <WrapPanel Orientation="Vertical" Width="220">
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Text="Broj turista: " Style="{StaticResource h3}"/>
                                 <TextBlock Text="{Binding ScheduledTour.Tourists.Count}" Style="{StaticResource h3}"/>
@@ -60,12 +60,65 @@
                             <TextBlock Text="{Binding Tour.Name}" Style="{StaticResource h4}"/>
                             <TextBlock Text="{Binding Tour.Location}" Style="{StaticResource h4}"/>
                         </WrapPanel>
-                        
+                        <Button Style="{StaticResource transparentButton}" Height="50" Width="50">
+                            <Image Source="{StaticResource stats1}"/>
+                        </Button>
+                        <Button Style="{StaticResource transparentButton}" Margin="10,0,0,0">
+                            <Image Source="{StaticResource reviews}" Height="50" Width="50"/>
+                        </Button>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <TextBlock Grid.Row="4" Text="Završene ture" Style="{StaticResource h2}"/>
+        <TextBlock Grid.Row="4" Text="Završene ture" Style="{StaticResource h2}" Margin="0,10,0,0"/>
+
+        <ListView Grid.Row="5" ItemsSource="{Binding TourDtos}" Style="{StaticResource listView}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="230"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Width="50" Height="50">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding Tour.Images[0]}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Margin="10,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Text="{Binding Tour.Name}" Style="{StaticResource h3}"/>
+                            <TextBlock Grid.Row="1" Text="{Binding Tour.Location}" Style="{StaticResource h4}"/>
+                            <TextBlock Grid.Row="2" Text="{Binding ScheduledTour.Start, StringFormat={StaticResource DateTimeFormat}}" Style="{StaticResource h4}"/>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Button Grid.Column="0" Style="{StaticResource transparentButton}" Height="50" Width="50">
+                                <Image Source="{StaticResource stats1}"/>
+                            </Button>
+                            <Button Grid.Column="1" Style="{StaticResource transparentButton}" Margin="10,0,0,0">
+                                <Image Source="{StaticResource reviews}" Height="50" Width="50"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

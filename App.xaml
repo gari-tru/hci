@@ -18,6 +18,8 @@
             <BitmapImage x:Key="start" UriSource="Resources/Images/start.png"/>
             <BitmapImage x:Key="cancel" UriSource="Resources/Images/cancel.png"/>
             <BitmapImage x:Key="pin" UriSource="Resources/Images/pin.png"/>
+            <BitmapImage x:Key="stats1" UriSource="Resources/Images/stats1.png"/>
+            <BitmapImage x:Key="reviews" UriSource="Resources/Images/reviews.png"/>
 
             <Style x:Key="page" TargetType="Page">
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
