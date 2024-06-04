@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Model;
+using BookingApp.View.Guide;
 
 namespace BookingApp.ViewModel.Guide
 {
@@ -35,16 +36,30 @@ namespace BookingApp.ViewModel.Guide
 
         public Frame NavigationService { get; set; }
         public RelayCommand MostVisitedTour { get; set; }
+        public RelayCommand NavigateTourStatistics { get; set; }
+        public RelayCommand NavigateTourReviews { get; set; }
 
         public FinishedToursViewModel(int userId, Frame navigationService)
         {
             this.userId = userId;
             NavigationService = navigationService;
             MostVisitedTour = new RelayCommand(MostVisitedTourExecute);
+            NavigateTourStatistics = new RelayCommand(NavigateTourStatisticsExecute);
+            NavigateTourReviews = new RelayCommand(NavigateTourReviewsExecute);
             MostVisitedTourExecute(null);
             InitializeTourDtos();
             FilterUniqueYears();
             Years.Insert(0, "Za sva vremena");
+        }
+
+        private void NavigateTourStatisticsExecute(object parameter)
+        {
+            NavigationService.Navigate(new TourStatisticsPage((TourDto)parameter));
+        }
+
+        private void NavigateTourReviewsExecute(object parameter)
+        {
+            NavigationService.Navigate(new TourReviewsPage((TourDto)parameter));
         }
 
         private void InitializeTourDtos()

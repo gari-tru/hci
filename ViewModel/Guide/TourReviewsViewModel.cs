@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+using BookingApp.Command;
 using BookingApp.Dto;
 using BookingApp.Model;
 using BookingApp.Service;
@@ -24,14 +26,19 @@ namespace BookingApp.ViewModel.Guide
 
         private TourReviewService _tourReviewService = new TourReviewService();
 
+        public RelayCommand ReportReview { get; set; }
+
         public TourReviewsViewModel(TourDto tourDto)
         {
             _tourDto = new ObservableCollection<TourDto> { tourDto };
             TourReviews = new ObservableCollection<TourReview>(_tourReviewService.GetAllByScheduledTourId(tourDto.ScheduledTour.Id));
+            TourReviews = new ObservableCollection<TourReview>(TourReviews.Where(tr => tr.IsValid != false).ToList());
+            ReportReview = new RelayCommand(ReportReviewExecute);
         }
 
-        public void ReportReview(TourReview tourReview)
+        private void ReportReviewExecute(object parameter)
         {
+            TourReview tourReview = (TourReview)parameter;
             tourReview.IsValid = false;
             _tourReviewService.Update(tourReview);
             int index = TourReviews.IndexOf(tourReview);

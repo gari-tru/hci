@@ -1,7 +1,5 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using BookingApp.Dto;
-using BookingApp.Model;
 using BookingApp.ViewModel.Guide;
 
 namespace BookingApp.View.Guide
@@ -22,7 +20,7 @@ namespace BookingApp.View.Guide
 
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
-            tourReviewsViewModel.ReportReview((TourReview)((Button)sender).CommandParameter);
+            //tourReviewsViewModel.ReportReview((TourReview)((Button)sender).CommandParameter);
         }
     }
 }

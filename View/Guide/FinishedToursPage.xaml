@@ -60,10 +60,12 @@
                             <TextBlock Text="{Binding Tour.Name}" Style="{StaticResource h4}"/>
                             <TextBlock Text="{Binding Tour.Location}" Style="{StaticResource h4}"/>
                         </WrapPanel>
-                        <Button Style="{StaticResource transparentButton}" Height="50" Width="50">
+                        <Button Command="{Binding DataContext.NavigateTourStatistics, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" CommandParameter="{Binding}"
+                                Style="{StaticResource transparentButton}" Height="50" Width="50">
                             <Image Source="{StaticResource stats1}"/>
                         </Button>
-                        <Button Style="{StaticResource transparentButton}" Margin="10,0,0,0">
+                        <Button Command="{Binding DataContext.NavigateTourReviews, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" CommandParameter="{Binding}"
+                                Style="{StaticResource transparentButton}" Margin="10,0,0,0">
                             <Image Source="{StaticResource reviews}" Height="50" Width="50"/>
                         </Button>
                     </StackPanel>
@@ -108,11 +110,13 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            
-                            <Button Grid.Column="0" Style="{StaticResource transparentButton}" Height="50" Width="50">
+
+                            <Button Command="{Binding DataContext.NavigateTourStatistics, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" CommandParameter="{Binding}"
+                                    Grid.Column="0" Style="{StaticResource transparentButton}" Height="50" Width="50">
                                 <Image Source="{StaticResource stats1}"/>
                             </Button>
-                            <Button Grid.Column="1" Style="{StaticResource transparentButton}" Margin="10,0,0,0">
+                            <Button Command="{Binding DataContext.NavigateTourReviews, RelativeSource={RelativeSource AncestorType={x:Type Page}}}" CommandParameter="{Binding}"
+                                    Grid.Column="1" Style="{StaticResource transparentButton}" Margin="10,0,0,0">
                                 <Image Source="{StaticResource reviews}" Height="50" Width="50"/>
                             </Button>
                         </Grid>

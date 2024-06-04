@@ -20,6 +20,7 @@
             <BitmapImage x:Key="pin" UriSource="Resources/Images/pin.png"/>
             <BitmapImage x:Key="stats1" UriSource="Resources/Images/stats1.png"/>
             <BitmapImage x:Key="reviews" UriSource="Resources/Images/reviews.png"/>
+            <BitmapImage x:Key="report" UriSource="Resources/Images/report.png"/>
 
             <Style x:Key="page" TargetType="Page">
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
@@ -46,7 +47,7 @@
             </Style>
 
             <Style x:Key="h4" TargetType="TextBlock">
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="16"/>
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
 
