@@ -32,26 +32,31 @@
 
             <Style x:Key="h1" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="40"/>
+                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="TextAlignment" Value="Center"/>
             </Style>
 
             <Style x:Key="h1.5" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="32"/>
+                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="TextAlignment" Value="Center"/>
             </Style>
 
             <Style x:Key="h2" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="28"/>
+                <Setter Property="Foreground" Value="White"/>
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
 
             <Style x:Key="h3" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Foreground" Value="Gray"/>
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
 
             <Style x:Key="h4" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Foreground" Value="Gray"/>
                 <Setter Property="TextWrapping" Value="Wrap"/>
             </Style>
 
@@ -84,6 +89,7 @@
             </Style>
 
             <Style x:Key="listView" TargetType="ListView">
+                <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="ItemContainerStyle">
                 <Setter.Value>
