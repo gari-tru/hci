@@ -20,21 +20,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,10,0,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="75"/>
-                            <ColumnDefinition Width="333"/>
-
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0" Width="75" Height="75">
-                            <Ellipse>
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding Tour.Images[0]}"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </Grid>
-
-                        <Grid Grid.Column="1" Margin="10,0,0,0">
+                        <Grid Margin="10,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>

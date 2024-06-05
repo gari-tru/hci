@@ -18,17 +18,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Statistika o turama" Style="{StaticResource h1}" VerticalAlignment="Center"/>
 
-            <TextBlock Grid.Column="0" Text="Statistika o turama" Style="{StaticResource h1.5}" VerticalAlignment="Center"/>
-            <Button Grid.Column="1" Content="PDF" Style="{StaticResource button}" Margin="10,0,0,0"/>
-        </Grid>
-
-        <TextBlock Grid.Row="1" Text="Najposećenija tura" Style="{StaticResource h2}"/>
+        <TextBlock Grid.Row="1" Text="Najposećenija tura" Style="{StaticResource h2}" Margin="0,10,0,0"/>
         
         <Grid Grid.Row="2" VerticalAlignment="Center" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>

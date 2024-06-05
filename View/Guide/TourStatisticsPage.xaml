@@ -15,8 +15,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <TextBlock Grid.Row="0" Text="Statistika o turi" Style="{StaticResource h1}"/>
+
+        <Grid Grid.Row="0" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Statistika o turi" Style="{StaticResource h1}" HorizontalAlignment="Left"/>
+            <Button Grid.Column="1" Command="{Binding PDFReport}" Content="PDF" Style="{StaticResource button}" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+        </Grid>
 
         <ListView Grid.Row="1" ItemsSource="{Binding _tourDto}" Style="{StaticResource listView}">
             <ListView.ItemTemplate>
@@ -25,7 +33,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="75"/>
                             <ColumnDefinition Width="333"/>
-
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0" Width="75" Height="75">

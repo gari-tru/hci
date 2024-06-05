@@ -1,12 +1,16 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using System.IO;
+using System.Diagnostics;
+using Microsoft.Win32;
 using System.Windows;
 using BookingApp.Dto;
-using LiveCharts;
-using LiveCharts.Wpf;
-using Microsoft.Win32;
+using BookingApp.Command;
+using BookingApp.Model;
 
 namespace BookingApp.ViewModel.Guide
 {
@@ -31,9 +35,18 @@ namespace BookingApp.ViewModel.Guide
             }
         }
 
+        public RelayCommand PDFReport { get; set; }
+        public TourDto mostVisitedTourDto { get; set; }
+        public TourDto TourDtoo { get; set; }
+        private ScheduledTourService scheduledTourService = new ScheduledTourService();
+        private TourService tourService = new TourService();
+
+
         public TourStatisticsViewModel(TourDto tourDto)
         {
             _tourDto = new ObservableCollection<TourDto> { tourDto };
+            TourDtoo = tourDto;
+            PDFReport = new RelayCommand(PDFReportExcecute);
             (Kids, Adults, Seniors) = tourDto.ScheduledTour.CalculateTouristStatistics();
             Values = new SeriesCollection
             {
@@ -46,14 +59,20 @@ namespace BookingApp.ViewModel.Guide
             };
             OnPropertyChanged(nameof(Values));
             Labels = new ObservableCollection<string> { "<18", "18-50", ">50" };
+            ScheduledTour scheduledTour = scheduledTourService.GetMostVisitedByYear(3, "Za sva vremena");
+            if (scheduledTour != null)
+            {
+                Tour tour = tourService.GetById(scheduledTour.TourId);
+                mostVisitedTourDto = new TourDto(tour, scheduledTour);
+            }
         }
 
-        public void GeneratePdfReport()
+        public void PDFReportExcecute(object parameter)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
             saveFileDialog.Title = "Save PDF Report";
-            saveFileDialog.FileName = $"tour_statistics_{DateTime.Now}.pdf";
+            saveFileDialog.FileName = $"tour_statistics_{DateTime.Now:ddMMyyyy_HHmmss}.pdf";
 
             if (saveFileDialog.ShowDialog() == true)
             {
@@ -63,61 +82,48 @@ namespace BookingApp.ViewModel.Guide
                 PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
                 doc.Open();
 
-                Chunk companyChunk = new Chunk("BOOKING APP", new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD));
+                Font titleFont = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD, BaseColor.BLACK);
+                Font subtitleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, BaseColor.BLACK);
+                Font contentFont = new Font(Font.FontFamily.HELVETICA, 14, Font.NORMAL, BaseColor.BLACK);
+                Font labelFont = new Font(Font.FontFamily.HELVETICA, 16, Font.NORMAL, BaseColor.BLACK);
+
+                Chunk companyChunk = new Chunk("Booking App", new Font(Font.FontFamily.HELVETICA, 40, Font.BOLD));
                 Paragraph companyTitle = new Paragraph(companyChunk);
+                companyTitle.Alignment = Element.ALIGN_CENTER;
                 doc.Add(companyTitle);
 
-                doc.Add(new Paragraph(" "));
-                doc.Add(new Paragraph(" "));
+                Paragraph mainTitle = new Paragraph("Statistika o turama", titleFont);
+                mainTitle.Alignment = Element.ALIGN_CENTER;
+                doc.Add(mainTitle);
 
-                Paragraph title = new Paragraph("Tour Requests Statistics", new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD));
-                title.Alignment = Element.ALIGN_CENTER;
-                doc.Add(title);
+                doc.Add(new Paragraph("Statistika o turi", subtitleFont));
+                Image img = Image.GetInstance(TourDtoo.Tour.Images[0]);
+                img.ScaleToFit(250f, 250f);
+                doc.Add(img);
+                doc.Add(new Paragraph($"Naziv: {TourDtoo.Tour.Name}", contentFont));
+                doc.Add(new Paragraph($"Lokacija: {TourDtoo.Tour.Location}", contentFont));
+                doc.Add(new Paragraph($"Datum: {TourDtoo.ScheduledTour.Start}", contentFont));
 
-                doc.Add(new Paragraph(" "));
-                doc.Add(new Paragraph(" "));
+                doc.Add(new Paragraph("Broj turista po starosnoj grupi", subtitleFont));
 
-                string yearText = Year == 0 ? "Year: Overall" : $"Year: {Year}";
-                doc.Add(new Paragraph(yearText));
-                doc.Add(new Paragraph($"Total Requests: {TotalRequests}"));
-                doc.Add(new Paragraph($"Accepted Requests: {AcceptedRequests}"));
-                doc.Add(new Paragraph($"Rejected Requests: {RejectedRequests}"));
-                doc.Add(new Paragraph($"Accepted Percentage: {AcceptedPercentage:F2}%"));
-                doc.Add(new Paragraph($"Rejected Percentage: {RejectedPercentage:F2}%"));
-                doc.Add(new Paragraph($"Average Participants in Accepted Requests: {AverageParticipantsInAcceptedRequests:F2}"));
-
-                doc.Add(new Paragraph(" "));
-                doc.Add(new Paragraph("----------------------------------------------"));
-                doc.Add(new Paragraph(" "));
-
-                Chunk overallRequestsByLanguageTitleChunk = new Chunk("Overall Requests by Language: ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD));
-                Paragraph overallRequestsByLanguageTitle = new Paragraph(overallRequestsByLanguageTitleChunk);
-                doc.Add(overallRequestsByLanguageTitle);
-
-                foreach (var entry in RequestsByLanguage)
+                for (int i = 0; i < 3; i++)
                 {
-                    doc.Add(new Paragraph($"{entry.Key}: {entry.Value}"));
+                    doc.Add(new Paragraph($"{Labels[i]}: {Values[0].Values[i]}", labelFont));
                 }
 
-                doc.Add(new Paragraph(" "));
-
-                Chunk overallRequestsByLocationTitleChunk = new Chunk("Overall Requests by Location: ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD));
-                Paragraph overallRequestsByLocationTitle = new Paragraph(overallRequestsByLocationTitleChunk);
-                doc.Add(overallRequestsByLocationTitle);
-
-                foreach (var entry in RequestsByLocation)
-                {
-                    doc.Add(new Paragraph($"{entry.Key}: {entry.Value}"));
-                }
+                doc.Add(new Paragraph("Najposecenija tura", subtitleFont));
+                img = Image.GetInstance(mostVisitedTourDto.Tour.Images[0]);
+                img.ScaleToFit(250f, 250f);
+                doc.Add(img);
+                doc.Add(new Paragraph($"Broj turista: {mostVisitedTourDto.ScheduledTour.Tourists.Count}", contentFont));
+                doc.Add(new Paragraph($"Naziv: {mostVisitedTourDto.Tour.Name}", contentFont));
+                doc.Add(new Paragraph($"Datum: {mostVisitedTourDto.ScheduledTour.Start}", contentFont));
 
                 doc.Close();
 
                 Process.Start(new ProcessStartInfo { FileName = path, UseShellExecute = true });
             }
-            else
-            {
-                MessageBox.Show("PDF generation cancelled.", "Cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
         }
+
     }
 }

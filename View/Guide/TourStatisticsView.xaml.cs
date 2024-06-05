@@ -12,7 +12,7 @@ namespace BookingApp.View.Guide
         public TourStatisticsView(TourDto tourDto)
         {
             InitializeComponent();
-            DataContext = new TourStatisticsViewModel(tourDto);
+            //DataContext = new TourStatisticsViewModel(tourDto);
         }
     }
 }
