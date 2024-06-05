@@ -12,6 +12,7 @@ namespace BookingApp.ViewModel.Guide
         public RelayCommand NavigateScheduledTours { get; set; }
         public RelayCommand NavigateCreateTour { get; set; }
         public RelayCommand NavigateFinishedTours { get; set; }
+        public RelayCommand NavigateTourRequests { get; set; }
 
         public GuideMainWindowViewModel(int userId, Frame navigationService)
         {
@@ -22,6 +23,7 @@ namespace BookingApp.ViewModel.Guide
             NavigateScheduledTours = new RelayCommand(NavigateScheduledToursExecute);
             NavigateCreateTour = new RelayCommand(NavigateCreateTourExecute);
             NavigateFinishedTours = new RelayCommand(NavigateFinishedToursExecute);
+            NavigateTourRequests = new RelayCommand(NavigateTourRequestsExecute);
         }
 
         private void NavigateBackExecute(object parameter)
@@ -45,6 +47,11 @@ namespace BookingApp.ViewModel.Guide
         private void NavigateFinishedToursExecute(object parameter)
         {
             NavigationService.Navigate(new FinishedToursPage(userId, NavigationService));
+        }
+
+        private void NavigateTourRequestsExecute(object parameter)
+        {
+            NavigationService.Navigate(new TourRequestsPage(userId, NavigationService));
         }
     }
 }

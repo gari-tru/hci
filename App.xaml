@@ -7,7 +7,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <sys:String x:Key="DateTimeFormat">dd.MM.yyyy. HH:mm</sys:String>
-            
+
+            <Style TargetType="Rectangle">
+                <Setter Property="Fill" Value="White"/>
+            </Style>
+
             <BitmapImage x:Key="menu" UriSource="Resources/Images/menu.png"/>
             <BitmapImage x:Key="logo" UriSource="Resources/Images/logo.png"/>
             <BitmapImage x:Key="back" UriSource="Resources/Images/back.png"/>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using BookingApp.Model;
 using BookingApp.Service;
 using BookingApp.View.Guide;
@@ -82,12 +83,15 @@ namespace BookingApp.ViewModel.Guide
 
         public DateTime Now { get; } = DateTime.Now;
 
-        public TourRequestsViewModel(int userId)
+        public Frame NavigationService { get; set; }
+
+        public TourRequestsViewModel(int userId, Frame navigationService)
         {
             TourRequests = new ObservableCollection<TourRequest>(tourRequestService.GetAllByWaiting());
             Locations = locationService.GetAll();
             Languages = languageService.GetAll();
             this.userId = userId;
+            NavigationService = navigationService;
         }
 
         public void FilterTourRequests()
@@ -117,8 +121,7 @@ namespace BookingApp.ViewModel.Guide
 
             if (status == TourRequestStatus.Accepted)
             {
-                CreateTourView createTourView = new CreateTourView(tourRequest, userId);
-                createTourView.ShowDialog();
+                NavigationService.Navigate(new CreateTourView(tourRequest, userId));
             }
         }
     }

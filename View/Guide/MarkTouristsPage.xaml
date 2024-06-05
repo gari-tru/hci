@@ -27,10 +27,10 @@
             </Border.Background>
         </Border>
 
-        <ListView Grid.Row="3" SelectedIndex="{Binding SelectedTouristIndex}" ItemsSource="{Binding TourDto.ScheduledTour.Tourists}" Style="{StaticResource listView}" Margin="0,10,0,0">
+        <ListView Grid.Row="3" SelectedIndex="{Binding SelectedTouristIndex}" ItemsSource="{Binding TourDto.ScheduledTour.Tourists}" Style="{StaticResource listView}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Margin="0,10,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>
