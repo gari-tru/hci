@@ -12,6 +12,10 @@
                 <Setter Property="Fill" Value="White"/>
             </Style>
 
+            <Style TargetType="ScrollViewer">
+                <Setter Property="CanContentScroll" Value="False"/>
+            </Style>
+
             <BitmapImage x:Key="menu" UriSource="Resources/Images/menu.png"/>
             <BitmapImage x:Key="logo" UriSource="Resources/Images/logo.png"/>
             <BitmapImage x:Key="back" UriSource="Resources/Images/back.png"/>

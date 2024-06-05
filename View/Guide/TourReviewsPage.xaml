@@ -10,7 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -20,7 +20,21 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,10,0,0">
-                        <Grid Margin="10,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="333"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Width="75" Height="75">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding Tour.Images[0]}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Margin="10,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -40,19 +54,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                        <Grid Grid.Column="0" Width="75" Height="75">
-                            <Ellipse>
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding Images[0]}"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </Grid>
-                        <StackPanel Width="255" Margin="10,0,0,0">
+                        <StackPanel Width="330">
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                <TextBlock Text="{Binding Tourist.Name}" Style="{StaticResource h3}"/>
-                                <TextBlock Text="{Binding Tourist.Surname}" Style="{StaticResource h3}"/>
-                                <TextBlock Text="," Margin="0,0,5,0" Style="{StaticResource h3}"/>
-                                <TextBlock Text="{Binding Tourist.Age}" Style="{StaticResource h3}"/>
+                                <TextBlock Text="{Binding Tourist.Name}" Style="{StaticResource h3}" Margin="0,0,5,0" Foreground="White"/>
+                                <TextBlock Text="{Binding Tourist.Surname}" Style="{StaticResource h3}" Foreground="White"/>
+                                <TextBlock Text="," Margin="0,0,5,0" Style="{StaticResource h3}" Foreground="White"/>
+                                <TextBlock Text="{Binding Tourist.Age}" Style="{StaticResource h3}" Foreground="White"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Priključio/la se u: " Style="{StaticResource h4}"/>
