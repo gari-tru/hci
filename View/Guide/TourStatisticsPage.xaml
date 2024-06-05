@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BookingApp.View.Guide"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="430"
       Title="TourStatisticsPage">
@@ -53,6 +54,28 @@
 
         <TextBlock Grid.Row="2" Text="Starosna grupa" Style="{StaticResource h2}" TextAlignment="Center"/>
 
-        <Grid Grid.Row="3" Background="Black" Width="350" Margin="0,10,0,10"/>
+        <lvc:CartesianChart Grid.Row="3" Background="White" DataContext="{Binding}" Width="300" Margin="0,10,0,10">
+            <lvc:CartesianChart.Series>
+                <lvc:ColumnSeries Title="Broj turista:" DataLabels="True" Foreground="Black" FontFamily="Microsoft Sans Serif" Values="{Binding Values[0].Values}">
+                    <lvc:ColumnSeries.Fill>
+                        <SolidColorBrush Color="Blue"/>
+                    </lvc:ColumnSeries.Fill>
+                </lvc:ColumnSeries>
+            </lvc:CartesianChart.Series>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Godine" Labels="{Binding Labels}" Foreground="Black" FontFamily="Microsoft Sans Serif">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Stroke="Gray" />
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Broj turista" Foreground="Black" FontFamily="Microsoft Sans Serif">
+                    <lvc:Axis.Separator>
+                        <lvc:Separator Stroke="Gray" />
+                    </lvc:Axis.Separator>
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
     </Grid>
 </Page>
