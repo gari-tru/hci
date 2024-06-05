@@ -24,6 +24,17 @@ namespace BookingApp.ViewModel.Guide
                 _selectedYear = value;
                 OnPropertyChanged(nameof(_selectedYear));
                 MostVisitedTourExecute(null);
+
+                TourDtos.Clear();
+                List<ScheduledTour> scheduledTours = scheduledTourService.GetAllByStatusAndGuideId(Status.Finished, userId);
+                scheduledTours = scheduledTours.OrderByDescending(scheduledTour => scheduledTour.Start).ToList();
+                scheduledTours = scheduledTours.Where(scheduledTour => _selectedYear == "Za sva vremena" || scheduledTour.Start.Year.ToString() == _selectedYear).ToList();
+                List<Tour> tours = tourService.GetAllByScheduledTours(scheduledTours);
+
+                for (int i = 0; i < scheduledTours.Count && i < tours.Count; i++)
+                {
+                    TourDtos.Add(new TourDto(tours[i], scheduledTours[i]));
+                }
             }
         }
 
@@ -66,6 +77,7 @@ namespace BookingApp.ViewModel.Guide
         {
             TourDtos = new ObservableCollection<TourDto>();
             List<ScheduledTour> scheduledTours = scheduledTourService.GetAllByStatusAndGuideId(Status.Finished, userId);
+            scheduledTours = scheduledTours.OrderByDescending(scheduledTour => scheduledTour.Start).ToList();
             List<Tour> tours = tourService.GetAllByScheduledTours(scheduledTours);
 
             for (int i = 0; i < scheduledTours.Count && i < tours.Count; i++)

@@ -54,8 +54,8 @@
                         </Grid>
                         <WrapPanel Orientation="Vertical" Width="220">
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Text="Broj turista: " Style="{StaticResource h3}"/>
-                                <TextBlock Text="{Binding ScheduledTour.Tourists.Count}" Style="{StaticResource h3}"/>
+                                <TextBlock Text="Broj turista: " Style="{StaticResource h3}" Foreground="White"/>
+                                <TextBlock Text="{Binding ScheduledTour.Tourists.Count}" Style="{StaticResource h3}" Foreground="White"/>
                             </WrapPanel>
                             <TextBlock Text="{Binding Tour.Name}" Style="{StaticResource h4}"/>
                             <TextBlock Text="{Binding Tour.Location}" Style="{StaticResource h4}"/>
@@ -100,7 +100,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Text="{Binding Tour.Name}" Style="{StaticResource h3}"/>
+                            <TextBlock Grid.Row="0" Text="{Binding Tour.Name}" Style="{StaticResource h3}" Foreground="White"/>
                             <TextBlock Grid.Row="1" Text="{Binding Tour.Location}" Style="{StaticResource h4}"/>
                             <TextBlock Grid.Row="2" Text="{Binding ScheduledTour.Start, StringFormat={StaticResource DateTimeFormat}}" Style="{StaticResource h4}"/>
                         </Grid>
