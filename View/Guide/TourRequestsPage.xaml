@@ -20,7 +20,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -78,22 +77,85 @@
             </dotNetKitControls:AutoCompleteComboBox.ItemsPanel>
         </dotNetKitControls:AutoCompleteComboBox>
 
-        <Grid Grid.Row="6" Margin="0,10,0,0" HorizontalAlignment="Center">
+        <Grid Grid.Row="6" Margin="0,10,0,0">
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Početak" Style="{StaticResource h3}" Foreground="White"/>
-            <xctk:DateTimePicker Text="{Binding Start, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True" Format="Custom"
-                                FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="10,0,0,0"/>
+            <Grid Grid.Column="0" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="Početak" Style="{StaticResource h3}" Foreground="White" HorizontalAlignment="Right"/>
+                <xctk:DateTimePicker Grid.Column="1" Text="{Binding Start, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True" Format="Custom"
+                                 FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="10,0,0,0" HorizontalAlignment="Left" Width="90"/>
+            </Grid>
 
-            <TextBlock Text="Kraj" Style="{StaticResource h3}" Foreground="White"/>
-            <xctk:DateTimePicker Text="{Binding End, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True" Format="Custom"
-                    FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="10,0,0,0"/>
+            <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Kraj" Style="{StaticResource h3}" Foreground="White" HorizontalAlignment="Right"/>
+                <xctk:DateTimePicker Grid.Column="1" Text="{Binding End, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True" Format="Custom" 
+                                     FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="10,0,0,0" HorizontalAlignment="Left" Width="90"/>
+            </Grid>
         </Grid>
 
-        <TextBlock Grid.Row="7" Text="Broj ljudi" Style="{StaticResource h3}" Margin="0,10,0,10" Foreground="White"/>
-        <xctk:IntegerUpDown Grid.Row="8" Value="{Binding TouristNumber, UpdateSourceTrigger=PropertyChanged}" Minimum="0" AllowSpin="True"/>
+        <Grid Grid.Row="7" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" Text="Broj ljudi" Style="{StaticResource h3}" Margin="0,10,0,10" Foreground="White"/>
+            <xctk:IntegerUpDown Width="50" Height="23" Grid.Column="1" Value="{Binding TouristNumber, UpdateSourceTrigger=PropertyChanged}" Minimum="0" AllowSpin="True" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+        </Grid>
+
+        <ListView Grid.Row="8" ItemsSource="{Binding TourRequests}" Style="{StaticResource listView}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <WrapPanel Grid.Column="0" Orientation="Vertical">
+                            <TextBlock Text="{Binding Location}" Style="{StaticResource h2}"/>
+                            <WrapPanel>
+                                <TextBlock Text="Broj ljudi: " Style="{StaticResource h3}"/>
+                                <TextBlock Text="{Binding TouristNumber}" Style="{StaticResource h3}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock Text="Jezik: " Style="{StaticResource h3}"/>
+                                <TextBlock Text="{Binding Language}" Style="{StaticResource h3}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock Text="Početak: " Style="{StaticResource h3}"/>
+                                <TextBlock Text="{Binding Start, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h3}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <TextBlock Text="Kraj: " Style="{StaticResource h3}"/>
+                                <TextBlock Text="{Binding End, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h3}"/>
+                            </WrapPanel>
+                        </WrapPanel>
+
+                        <Grid Grid.Column="1" HorizontalAlignment="Right">
+                            <Button CommandParameter="{Binding}" Click="btnRejectTourRequest_Click" Style="{StaticResource transparentButton}" Margin="0,0,120,0">
+                                <Image Source="{StaticResource cancel}" Height="50" Width="50"/>
+                            </Button>
+                            <Button CommandParameter="{Binding}" Click="btnAcceptTourRequest_Click" Style="{StaticResource transparentButton}">
+                                <Image Source="{StaticResource accept}" Height="50" Width="50"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
