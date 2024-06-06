@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using BookingApp.Command;
 using BookingApp.View.Guide;
 
@@ -38,6 +39,7 @@ namespace BookingApp.ViewModel.Guide
             NavigateFinishedTours = new RelayCommand(NavigateFinishedToursExecute);
             NavigateTourRequests = new RelayCommand(NavigateTourRequestsExecute);
             ToggleMenu = new RelayCommand(ToggleMenuExecute);
+            Exit = new RelayCommand(ExitExecute);
         }
 
         private void ToggleMenuExecute(object parameter)
@@ -53,7 +55,6 @@ namespace BookingApp.ViewModel.Guide
                 IsMenuOpen = false;
             }
         }
-
         private void NavigateScheduledToursExecute(object parameter)
         {
             NavigationService.Navigate(new ScheduledToursPage(userId, NavigationService));
@@ -76,6 +77,12 @@ namespace BookingApp.ViewModel.Guide
         {
             NavigationService.Navigate(new TourRequestsPage(userId, NavigationService));
             IsMenuOpen = false;
+        }
+
+        private void ExitExecute(object parameter)
+        {
+            Window window = Window.GetWindow(NavigationService);
+            window?.Close();
         }
     }
 }
