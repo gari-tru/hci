@@ -32,6 +32,10 @@
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
             </Style>
 
+            <Style TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+            </Style>
+
             <Style x:Key="h1" TargetType="TextBlock">
                 <Setter Property="FontSize" Value="40"/>
                 <Setter Property="Foreground" Value="White"/>
