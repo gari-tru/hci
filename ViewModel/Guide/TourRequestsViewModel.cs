@@ -121,7 +121,7 @@ namespace BookingApp.ViewModel.Guide
             {
                 bool matchLocation = string.IsNullOrEmpty(Location) || tourRequest.Location.ToLower().Contains(Location.ToLower());
                 bool matchLanguage = string.IsNullOrEmpty(Language) || tourRequest.Language.ToLower().Contains(Language.ToLower());
-                bool matchTouristNumber = TouristNumber == 0 || tourRequest.TouristNumber == TouristNumber;
+                bool matchTouristNumber = TouristNumber == 0 || tourRequest.TouristNumber >= TouristNumber;
                 bool matchStartDate = string.IsNullOrEmpty(Start) || Convert.ToDateTime(tourRequest.Start) >= Convert.ToDateTime(Start);
                 bool matchEndDate = string.IsNullOrEmpty(End) || Convert.ToDateTime(tourRequest.End) <= Convert.ToDateTime(End);
 

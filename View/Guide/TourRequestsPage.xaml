@@ -146,22 +146,22 @@
                         </Grid.ColumnDefinitions>
 
                         <WrapPanel Grid.Column="0" Orientation="Vertical">
-                            <TextBlock Text="{Binding Location}" Style="{StaticResource h2}"/>
+                            <TextBlock Text="{Binding Location}" Style="{StaticResource h3}" Foreground="White"/>
                             <WrapPanel>
-                                <TextBlock Text="Broj ljudi: " Style="{StaticResource h3}"/>
-                                <TextBlock Text="{Binding TouristNumber}" Style="{StaticResource h3}"/>
+                                <TextBlock Text="Broj ljudi: " Style="{StaticResource h4}"/>
+                                <TextBlock Text="{Binding TouristNumber}" Style="{StaticResource h4}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <TextBlock Text="Jezik: " Style="{StaticResource h3}"/>
-                                <TextBlock Text="{Binding Language}" Style="{StaticResource h3}"/>
+                                <TextBlock Text="Jezik: " Style="{StaticResource h4}"/>
+                                <TextBlock Text="{Binding Language}" Style="{StaticResource h4}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <TextBlock Text="Početak: " Style="{StaticResource h3}"/>
-                                <TextBlock Text="{Binding Start, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h3}"/>
+                                <TextBlock Text="Početak: " Style="{StaticResource h4}"/>
+                                <TextBlock Text="{Binding Start, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h4}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <TextBlock Text="Kraj: " Style="{StaticResource h3}"/>
-                                <TextBlock Text="{Binding End, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h3}"/>
+                                <TextBlock Text="Kraj: " Style="{StaticResource h4}"/>
+                                <TextBlock Text="{Binding End, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h4}"/>
                             </WrapPanel>
                         </WrapPanel>
 

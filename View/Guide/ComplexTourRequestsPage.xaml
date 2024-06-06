@@ -80,10 +80,6 @@
                                                 <TextBlock Text="Početak: " Style="{StaticResource h4}"/>
                                                 <TextBlock Text="{Binding Start, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h4}"/>
                                             </WrapPanel>
-                                            <WrapPanel>
-                                                <TextBlock Text="Kraj: " Style="{StaticResource h4}"/>
-                                                <TextBlock Text="{Binding End, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h4}"/>
-                                            </WrapPanel>
                                         </WrapPanel>
                                         <Button Grid.Column="1" CommandParameter="{Binding}" Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ListView}}"
                                                 Click="btnAcceptTourRequest_Click" Style="{StaticResource transparentButton}" HorizontalAlignment="Right">
