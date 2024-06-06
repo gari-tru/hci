@@ -26,6 +26,7 @@
             <BitmapImage x:Key="reviews" UriSource="Resources/Images/reviews.png"/>
             <BitmapImage x:Key="report" UriSource="Resources/Images/report.png"/>
             <BitmapImage x:Key="accept" UriSource="Resources/Images/accept.png"/>
+            <BitmapImage x:Key="clear" UriSource="Resources/Images/clear.png"/>
 
             <Style x:Key="page" TargetType="Page">
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
@@ -65,7 +66,7 @@
                 <Setter Property="Foreground" Value="Black"/>
                 <Setter Property="Background" Value="White"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">

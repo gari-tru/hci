@@ -20,6 +20,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -78,48 +80,66 @@
         </dotNetKitControls:AutoCompleteComboBox>
 
         <Grid Grid.Row="6" Margin="0,10,0,0">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0" HorizontalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                <TextBlock Grid.Column="0" Text="Početak" Style="{StaticResource h3}" Foreground="White" HorizontalAlignment="Right"/>
-                <xctk:DateTimePicker Grid.Column="1" Text="{Binding Start, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True" Format="Custom"
-                                 FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="10,0,0,0" HorizontalAlignment="Left" Width="90"/>
-            </Grid>
-
-            <Grid Grid.Column="1" HorizontalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="Kraj" Style="{StaticResource h3}" Foreground="White" HorizontalAlignment="Right"/>
-                <xctk:DateTimePicker Grid.Column="1" Text="{Binding End, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True" Format="Custom" 
-                                     FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="10,0,0,0" HorizontalAlignment="Left" Width="90"/>
-            </Grid>
-        </Grid>
-
-        <Grid Grid.Row="7" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <TextBlock Grid.Column="0" Text="Broj ljudi" Style="{StaticResource h3}" Margin="0,10,0,10" Foreground="White"/>
-            <xctk:IntegerUpDown Width="50" Height="23" Grid.Column="1" Value="{Binding TouristNumber, UpdateSourceTrigger=PropertyChanged}" Minimum="0" AllowSpin="True" Margin="10,0,0,0" HorizontalAlignment="Left"/>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Početak" Style="{StaticResource h3}" Foreground="White" Margin="0,0,0,5"/>
+                    <xctk:DateTimePicker Grid.Column="1" Text="{Binding Start, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True"
+                     Format="Custom" FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="15,0,0,0" HorizontalAlignment="Left"
+                                         Height="23" Width="125"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Grid.Column="0" Text="Kraj" Style="{StaticResource h3}" Foreground="White" Margin="0,5,0,5"/>
+                    <xctk:DateTimePicker Grid.Column="1" Text="{Binding End, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding Now}" ClipValueToMinMax="True" 
+                     Format="Custom" FormatString="{StaticResource DateTimeFormat}" AllowSpin="True" ShowButtonSpinner="False" Margin="15,0,0,0" HorizontalAlignment="Right"
+                                         Height="23" Width="125"/>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Broj ljudi" Style="{StaticResource h3}" Margin="0,5,0,0" Foreground="White"/>
+                    <xctk:IntegerUpDown Grid.Column="1" Width="50" Height="23" Value="{Binding TouristNumber, UpdateSourceTrigger=PropertyChanged}" Minimum="0" AllowSpin="True"
+                                Margin="10.5,0,0,0" HorizontalAlignment="Left"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <Button Command="{Binding ClearSearch}" Style="{StaticResource transparentButton}" Margin="0,0,20,0">
+                    <Image Source="{StaticResource clear}" Height="50" Width="50"/>
+                </Button>
+            </Grid>
         </Grid>
 
-        <ListView Grid.Row="8" ItemsSource="{Binding TourRequests}" Style="{StaticResource listView}">
+        <Rectangle Grid.Row="9" Height="2" Margin="0,10,0,10"/>
+
+        <ListView Grid.Row="10" ItemsSource="{Binding TourRequests}" Style="{StaticResource listView}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="0,10,0,0">
+                    <Grid Margin="0,0,0,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="220"/>
                             <ColumnDefinition Width="*"/>
@@ -145,11 +165,11 @@
                             </WrapPanel>
                         </WrapPanel>
 
-                        <Grid Grid.Column="1" HorizontalAlignment="Right">
-                            <Button CommandParameter="{Binding}" Click="btnRejectTourRequest_Click" Style="{StaticResource transparentButton}" Margin="0,0,120,0">
+                        <Grid Grid.Column="1">
+                            <Button CommandParameter="{Binding}" Click="btnRejectTourRequest_Click" Style="{StaticResource transparentButton}">
                                 <Image Source="{StaticResource cancel}" Height="50" Width="50"/>
                             </Button>
-                            <Button CommandParameter="{Binding}" Click="btnAcceptTourRequest_Click" Style="{StaticResource transparentButton}">
+                            <Button CommandParameter="{Binding}" Click="btnAcceptTourRequest_Click" Style="{StaticResource transparentButton}" Margin="120,0,0,0">
                                 <Image Source="{StaticResource accept}" Height="50" Width="50"/>
                             </Button>
                         </Grid>

@@ -20,7 +20,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _location = value;
-                OnPropertyChanged(nameof(_location));
+                OnPropertyChanged(nameof(Location));
                 FilterTourRequests();
             }
         }
@@ -32,7 +32,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _language = value;
-                OnPropertyChanged(nameof(_language));
+                OnPropertyChanged(nameof(Language));
                 FilterTourRequests();
             }
         }
@@ -44,7 +44,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _touristNumber = value;
-                OnPropertyChanged(nameof(_touristNumber));
+                OnPropertyChanged(nameof(TouristNumber));
                 FilterTourRequests();
             }
         }
@@ -56,7 +56,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _start = value;
-                OnPropertyChanged(nameof(_start));
+                OnPropertyChanged(nameof(Start));
                 FilterTourRequests();
             }
         }
@@ -68,7 +68,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _end = value;
-                OnPropertyChanged(nameof(_end));
+                OnPropertyChanged(nameof(End));
                 FilterTourRequests();
             }
         }
@@ -86,6 +86,7 @@ namespace BookingApp.ViewModel.Guide
 
         public Frame NavigationService { get; set; }
         public RelayCommand NavigateComplexTourRequests { get; set; }
+        public RelayCommand ClearSearch { get; set; }
 
         public TourRequestsViewModel(int userId, Frame navigationService)
         {
@@ -95,6 +96,16 @@ namespace BookingApp.ViewModel.Guide
             this.userId = userId;
             NavigationService = navigationService;
             NavigateComplexTourRequests = new RelayCommand(NavigateComplexTourRequestsExecute);
+            ClearSearch = new RelayCommand(ClearSearchExecute);
+        }
+
+        private void ClearSearchExecute(object parameter)
+        {
+            Location = "";
+            Language = "";
+            TouristNumber = 0;
+            Start = "";
+            End = "";
         }
 
         public void NavigateComplexTourRequestsExecute(object parameter)
@@ -129,7 +140,7 @@ namespace BookingApp.ViewModel.Guide
 
             if (status == TourRequestStatus.Accepted)
             {
-                NavigationService.Navigate(new CreateTourView(tourRequest, userId));
+                NavigationService.Navigate(new CreateTourPage(tourRequest, userId, NavigationService));
             }
         }
     }

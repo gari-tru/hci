@@ -41,7 +41,7 @@ namespace BookingApp.ViewModel.Guide
 
         private void NavigateCreateTourExecute(object parameter)
         {
-            NavigationService.Navigate(new CreateTourPage());
+            NavigationService.Navigate(new CreateTourPage(null, userId, NavigationService));
         }
 
         private void NavigateFinishedToursExecute(object parameter)
