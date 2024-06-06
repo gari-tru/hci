@@ -12,9 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="Zahtevi za ture" Style="{StaticResource h1}"/>
@@ -50,5 +48,55 @@
                 </Button.Template>
             </Button>
         </Grid>
+
+        <ListView Grid.Row="2" ItemsSource="{Binding ComplexTourRequests}" Style="{StaticResource listView}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,10,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Zahtev " Style="{StaticResource h2}"/>
+                            <TextBlock Text="{Binding Id}" Style="{StaticResource h2}"/>
+                        </StackPanel>
+                        <ListView ItemsSource="{Binding TourRequests}" Style="{StaticResource listView}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="220"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <WrapPanel Grid.Column="0" Orientation="Vertical">
+                                            <TextBlock Text="{Binding Location}" Style="{StaticResource h3}" Foreground="White"/>
+                                            <WrapPanel>
+                                                <TextBlock Text="Broj ljudi: " Style="{StaticResource h4}"/>
+                                                <TextBlock Text="{Binding TouristNumber}" Style="{StaticResource h4}"/>
+                                            </WrapPanel>
+                                            <WrapPanel>
+                                                <TextBlock Text="Jezik: " Style="{StaticResource h4}"/>
+                                                <TextBlock Text="{Binding Language}" Style="{StaticResource h4}"/>
+                                            </WrapPanel>
+                                            <WrapPanel>
+                                                <TextBlock Text="Početak: " Style="{StaticResource h4}"/>
+                                                <TextBlock Text="{Binding Start, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h4}"/>
+                                            </WrapPanel>
+                                            <WrapPanel>
+                                                <TextBlock Text="Kraj: " Style="{StaticResource h4}"/>
+                                                <TextBlock Text="{Binding End, StringFormat={}{0:dd.MM.yyyy. HH:mm}}" Style="{StaticResource h4}"/>
+                                            </WrapPanel>
+                                        </WrapPanel>
+                                        <Button Grid.Column="1" CommandParameter="{Binding}" Tag="{Binding DataContext, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                Click="btnAcceptTourRequest_Click" Style="{StaticResource transparentButton}" HorizontalAlignment="Right">
+                                        <Image Source="{StaticResource accept}" Height="50" Width="50"/>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Rectangle Height="2" Fill="White" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

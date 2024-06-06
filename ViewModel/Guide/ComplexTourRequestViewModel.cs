@@ -38,8 +38,7 @@ namespace BookingApp.ViewModel.Guide
             complexTourRequest.TourRequests[tourRequestIndex].Id = userId;
             complexTourRequestService.Update(complexTourRequest);
             ComplexTourRequests.Remove(complexTourRequest);
-            CreateTourView createTourView = new CreateTourView(tourRequest, userId);
-            createTourView.ShowDialog();
+            NavigationService.Navigate(new CreateTourPage(tourRequest, userId, NavigationService));
         }
     }
 }
