@@ -74,6 +74,28 @@ namespace BookingApp.ViewModel.Guide
             }
         }
 
+        private string _label = "Uneti lokaciju/jezik";
+        public string Label
+        {
+            get => _label;
+            set
+            {
+                _label = value;
+                OnPropertyChanged(nameof(Label));
+            }
+        }
+
+        private string _plotVisibility = "Hidden";
+        public string PlotVisibility
+        {
+            get => _plotVisibility;
+            set
+            {
+                _plotVisibility = value;
+                OnPropertyChanged(nameof(PlotVisibility));
+            }
+        }
+
         private readonly int userId;
 
         private TourRequestService tourRequestService = new TourRequestService();
@@ -124,6 +146,8 @@ namespace BookingApp.ViewModel.Guide
             {
                 Statistics.Add(statistic);
             }
+            Label = label;
+            PlotVisibility = "Visible";
         }
 
         public void CreateTour(string label)
