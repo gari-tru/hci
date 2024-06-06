@@ -38,12 +38,13 @@ namespace BookingApp.Repository
         {
             _tourRequests = _serializer.FromCSV(FilePath);
             bool isYearFilterApplied = year != "Na nivou godina";
+            CultureInfo serbianCulture = new CultureInfo("sr-Latn-RS");
 
             return _tourRequests
                 .Where(tr => (tr.Location == label || tr.Language == label))
                 .Where(tr => year == "Na nivou godina" || tr.Start.Year.ToString() == year)
                 .GroupBy(tr => isYearFilterApplied ?
-                              CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(tr.Start.Month) :
+                              serbianCulture.DateTimeFormat.GetMonthName(tr.Start.Month) :
                               tr.Start.Year.ToString())
                 .ToDictionary(g => g.Key, g => g.Count());
         }

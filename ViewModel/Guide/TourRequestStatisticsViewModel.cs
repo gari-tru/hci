@@ -5,6 +5,8 @@ using System.Windows.Controls;
 using BookingApp.Model;
 using BookingApp.Service;
 using BookingApp.View.Guide;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace BookingApp.ViewModel.Guide
 {
@@ -45,7 +47,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _selectedYear = value;
-                OnPropertyChanged(nameof(_selectedYear));
+                OnPropertyChanged(nameof(SelectedYear));
                 FilterStatistics();
             }
         }
@@ -108,6 +110,18 @@ namespace BookingApp.ViewModel.Guide
 
         public Frame NavigationService { get; set; }
 
+        public SeriesCollection Values { get; set; }
+        private ObservableCollection<string> _labels;
+        public ObservableCollection<string> Labels
+        {
+            get { return _labels; }
+            set
+            {
+                _labels = value;
+                OnPropertyChanged(nameof(Labels));
+            }
+        }
+
         public TourRequestStatisticsViewModel(int userId, Frame navigationService)
         {
             this.userId = userId;
@@ -146,6 +160,19 @@ namespace BookingApp.ViewModel.Guide
             {
                 Statistics.Add(statistic);
             }
+
+            Values = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "Broj zahteva za turu:",
+                    Values = new ChartValues<int>(Statistics.Select(s => s.Value)),
+                    DataLabels = true
+                }
+            };
+            OnPropertyChanged(nameof(Values));
+            Labels = new ObservableCollection<string>(Statistics.Select(s => s.Key));
+
             Label = label;
             PlotVisibility = "Visible";
         }
