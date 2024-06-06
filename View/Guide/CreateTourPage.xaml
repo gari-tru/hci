@@ -31,7 +31,6 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="Kreiranje ture" Style="{StaticResource h1}"/>
@@ -146,7 +145,21 @@
                 </Grid>
             </Grid>
 
-            <Button Content="Kreiraj" Grid.Row="19" Click="btnCreateTour_Click" Style="{StaticResource button}" Margin="0,10,0,10"/>
+            <TextBlock Grid.Row="16" Text="Slike" Style="{StaticResource h3}" Foreground="White" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            <ItemsControl Grid.Row="17" ItemsSource="{Binding Images}" Height="Auto">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,10,0,0">
+                            <Image Source="{Binding}" Stretch="UniformToFill" Width="150" Height="150"/>
+                            <Button  Style="{StaticResource transparentButton}">
+                                <Image Source="{StaticResource cancel}" Width="50" Height="50" Margin="100,0,0,100"/>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Button Content="Kreiraj" Grid.Row="18" Click="btnCreateTour_Click" Style="{StaticResource button}" Margin="0,10,0,10"/>
         </Grid>
     </ScrollViewer>
 </Page>

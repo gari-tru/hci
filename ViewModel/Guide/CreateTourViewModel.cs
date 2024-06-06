@@ -295,14 +295,10 @@ namespace BookingApp.ViewModel.Guide
                 {
                     string destinationPath = Path.Combine(_destinationPath, Path.GetFileName(fileName));
                     File.Copy(fileName, destinationPath, overwrite: true);
-                    string relativePath = $"{_relativePath}{Path.GetFileName(fileName)}";
-
-                    if (!Images.Contains(relativePath))
-                    {
-                        Images.Add(relativePath);
-                    }
+                    Images.Add(destinationPath);
                 }
             }
         }
+
     }
 }
