@@ -14,6 +14,7 @@ namespace BookingApp.ViewModel.Guide
         public RelayCommand NavigateFinishedTours { get; set; }
         public RelayCommand NavigateTourRequests { get; set; }
         public RelayCommand ToggleMenu { get; set; }
+        public RelayCommand Exit { get; set; }
 
         private bool _isMenuOpen = false;
         public bool IsMenuOpen
