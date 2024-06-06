@@ -35,5 +35,15 @@ namespace BookingApp.View.Guide
         {
             createTourViewModel.UploadImages();
         }
+
+        private void btnMostWantedLocation_Click(object sender, RoutedEventArgs e)
+        {
+            createTourViewModel.AcceptSystemTour("location");
+        }
+
+        private void btnMostWantedLanguage_Click(object sender, RoutedEventArgs e)
+        {
+            createTourViewModel.AcceptSystemTour("language");
+        }
     }
 }

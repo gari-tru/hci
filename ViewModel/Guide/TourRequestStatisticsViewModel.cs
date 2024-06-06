@@ -60,7 +60,6 @@ namespace BookingApp.ViewModel.Guide
             {
                 _mostWantedLocation = value;
                 OnPropertyChanged(nameof(_mostWantedLocation));
-                FilterStatistics();
             }
         }
 
@@ -72,7 +71,6 @@ namespace BookingApp.ViewModel.Guide
             {
                 _mostWantedLanguage = value;
                 OnPropertyChanged(nameof(_mostWantedLanguage));
-                FilterStatistics();
             }
         }
 

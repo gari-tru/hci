@@ -29,7 +29,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _location = value;
-                OnPropertyChanged(nameof(_location));
+                OnPropertyChanged(nameof(Location));
             }
         }
 
@@ -51,7 +51,7 @@ namespace BookingApp.ViewModel.Guide
             set
             {
                 _language = value;
-                OnPropertyChanged(nameof(_language));
+                OnPropertyChanged(nameof(Language));
             }
         }
 
@@ -168,6 +168,30 @@ namespace BookingApp.ViewModel.Guide
 
         public DateTime Now { get; } = DateTime.Now;
 
+        private string _mostWantedLocation;
+        public string MostWantedLocation
+        {
+            get => _mostWantedLocation;
+            set
+            {
+                _mostWantedLocation = value;
+                OnPropertyChanged(nameof(_mostWantedLocation));
+            }
+        }
+
+        private string _mostWantedLanguage;
+        public string MostWantedLanguage
+        {
+            get => _mostWantedLanguage;
+            set
+            {
+                _mostWantedLanguage = value;
+                OnPropertyChanged(nameof(_mostWantedLanguage));
+            }
+        }
+
+        TourRequestService tourRequestService = new TourRequestService();
+
         public CreateTourViewModel(TourRequest tourRequest, int userId)
         {
             this.userId = userId;
@@ -181,6 +205,22 @@ namespace BookingApp.ViewModel.Guide
                 Description = tourRequest.Description;
                 Language = tourRequest.Language;
                 MaxTourists = tourRequest.TouristNumber;
+            }
+
+            (MostWantedLocation, MostWantedLanguage) = tourRequestService.GetMostWantedLocationAndLanguage();
+        }
+
+        public void AcceptSystemTour(string label)
+        {
+            TourRequest tourRequest = new TourRequest();
+
+            if (label == "location")
+            {
+                Location = MostWantedLocation;
+            }
+            else if (label == "language")
+            {
+                Language = MostWantedLanguage;
             }
         }
 
