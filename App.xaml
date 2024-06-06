@@ -27,6 +27,10 @@
             <BitmapImage x:Key="report" UriSource="Resources/Images/report.png"/>
             <BitmapImage x:Key="accept" UriSource="Resources/Images/accept.png"/>
             <BitmapImage x:Key="clear" UriSource="Resources/Images/clear.png"/>
+            <BitmapImage x:Key="stats2" UriSource="Resources/Images/stats2.png"/>
+            <BitmapImage x:Key="quit" UriSource="Resources/Images/quit.png"/>
+            <BitmapImage x:Key="logout" UriSource="Resources/Images/logout.png"/>
+            <BitmapImage x:Key="star" UriSource="Resources/Images/star.png"/>
 
             <Style x:Key="page" TargetType="Page">
                 <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
