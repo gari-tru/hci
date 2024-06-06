@@ -1,16 +1,15 @@
-﻿using LiveCharts;
-using LiveCharts.Wpf;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
+using BookingApp.Command;
+using BookingApp.Dto;
+using BookingApp.Model;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.IO;
-using System.Diagnostics;
+using LiveCharts;
+using LiveCharts.Wpf;
 using Microsoft.Win32;
-using System.Windows;
-using BookingApp.Dto;
-using BookingApp.Command;
-using BookingApp.Model;
 
 namespace BookingApp.ViewModel.Guide
 {
