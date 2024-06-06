@@ -15,7 +15,7 @@ namespace BookingApp.View.Guide
         public ComplexTourRequestsView(int userId)
         {
             InitializeComponent();
-            complexTourRequestsViewModel = new ComplexTourRequestsViewModel(userId);
+            //complexTourRequestsViewModel = new ComplexTourRequestsViewModel(userId);
             DataContext = complexTourRequestsViewModel;
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using BookingApp.Command;
 using BookingApp.Model;
 using BookingApp.Service;
 using BookingApp.View.Guide;
@@ -84,6 +85,7 @@ namespace BookingApp.ViewModel.Guide
         public DateTime Now { get; } = DateTime.Now;
 
         public Frame NavigationService { get; set; }
+        public RelayCommand NavigateComplexTourRequests { get; set; }
 
         public TourRequestsViewModel(int userId, Frame navigationService)
         {
@@ -92,6 +94,12 @@ namespace BookingApp.ViewModel.Guide
             Languages = languageService.GetAll();
             this.userId = userId;
             NavigationService = navigationService;
+            NavigateComplexTourRequests = new RelayCommand(NavigateComplexTourRequestsExecute);
+        }
+
+        public void NavigateComplexTourRequestsExecute(object parameter)
+        {
+            NavigationService.Navigate(new ComplexTourRequestsPage(userId, NavigationService));
         }
 
         public void FilterTourRequests()
