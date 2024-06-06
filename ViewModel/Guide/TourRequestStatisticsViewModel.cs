@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Controls;
 using BookingApp.Model;
 using BookingApp.Service;
 using BookingApp.View.Guide;
@@ -83,9 +84,12 @@ namespace BookingApp.ViewModel.Guide
         public List<string> Languages { get; }
         public List<string> Locations { get; }
 
-        public TourRequestStatisticsViewModel(int userId)
+        public Frame NavigationService { get; set; }
+
+        public TourRequestStatisticsViewModel(int userId, Frame navigationService)
         {
             this.userId = userId;
+            NavigationService = navigationService;
             tourRequests = tourRequestService.GetAll();
             Languages = languageService.GetAll();
             Locations = locationService.GetAll();

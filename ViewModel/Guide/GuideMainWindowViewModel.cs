@@ -14,6 +14,7 @@ namespace BookingApp.ViewModel.Guide
         public RelayCommand NavigateCreateTour { get; set; }
         public RelayCommand NavigateFinishedTours { get; set; }
         public RelayCommand NavigateTourRequests { get; set; }
+        public RelayCommand NavigateTourRequestStatistics { get; set; }
         public RelayCommand ToggleMenu { get; set; }
         public RelayCommand Exit { get; set; }
 
@@ -38,8 +39,15 @@ namespace BookingApp.ViewModel.Guide
             NavigateCreateTour = new RelayCommand(NavigateCreateTourExecute);
             NavigateFinishedTours = new RelayCommand(NavigateFinishedToursExecute);
             NavigateTourRequests = new RelayCommand(NavigateTourRequestsExecute);
+            NavigateTourRequestStatistics = new RelayCommand(NavigateTourRequestStatisticsExecute);
             ToggleMenu = new RelayCommand(ToggleMenuExecute);
             Exit = new RelayCommand(ExitExecute);
+        }
+
+        private void NavigateTourRequestStatisticsExecute(object parameter)
+        {
+            NavigationService.Navigate(new TourRequestStatisticsPage(userId, NavigationService));
+            IsMenuOpen = false;
         }
 
         private void ToggleMenuExecute(object parameter)

@@ -144,7 +144,7 @@
                         </Grid>
                     </Button>
 
-                    <Button Grid.Row="4" HorizontalAlignment="Left" Command="{Binding NavigateScheduledTours}" Style="{StaticResource transparentButton}">
+                    <Button Grid.Row="4" HorizontalAlignment="Left" Command="{Binding NavigateTourRequestStatistics}" Style="{StaticResource transparentButton}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>

@@ -1,19 +1,20 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using BookingApp.ViewModel.Guide;
 
 namespace BookingApp.View.Guide
 {
     /// <summary>
-    /// Interaction logic for TourRequestStatistics.xaml
+    /// Interaction logic for TourRequestStatisticsPage.xaml
     /// </summary>
-    public partial class TourRequestStatisticsView : Window
+    public partial class TourRequestStatisticsPage : Page
     {
         TourRequestStatisticsViewModel tourRequestStatisticsViewModel;
 
-        public TourRequestStatisticsView(int userId)
+        public TourRequestStatisticsPage(int userId, Frame navigationService)
         {
             InitializeComponent();
-            //tourRequestStatisticsViewModel = new TourRequestStatisticsViewModel(userId);
+            tourRequestStatisticsViewModel = new TourRequestStatisticsViewModel(userId, navigationService);
             DataContext = tourRequestStatisticsViewModel;
         }
 
