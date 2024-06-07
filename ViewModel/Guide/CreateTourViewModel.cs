@@ -101,18 +101,117 @@ namespace BookingApp.ViewModel.Guide
 
         public ObservableCollection<string> Images { get; set; } = new ObservableCollection<string>();
 
-        public bool IsTourValid =>
-            !string.IsNullOrWhiteSpace(Name) &&
-            !string.IsNullOrWhiteSpace(Location) && Locations.Contains(Location) &&
+        public bool IsTourValid()
+        {
+            NameValidator = string.IsNullOrWhiteSpace(Name) ? "Visible" : "Collapsed";
+            KeyPointValidatorVisibility = isKeyPointNamesValid ? "Collapsed" : "Visible";
+            LocationValidator = !Locations.Contains(Location) ? "Visible" : "Collapsed";
+            DescriptionValidator = string.IsNullOrWhiteSpace(Description) ? "Visible" : "Collapsed";
+            LanguageValidator = !Languages.Contains(Language) ? "Visible" : "Collapsed";
+            ImagesValidator = Images.Count > 0 ? "Collapsed" : "Visible";
+            TimeValidator = IsTimeValid() ? "Collapsed" : "Visible";
+
+            return !string.IsNullOrWhiteSpace(Name) &&
+            Locations.Contains(Location) &&
             !string.IsNullOrWhiteSpace(Description) &&
-            !string.IsNullOrWhiteSpace(Language) && Languages.Contains(Language) &&
+            Languages.Contains(Language) &&
             MaxTourists > 0 &&
             isKeyPointNamesValid &&
             Duration > 0 &&
             Images.Count > 0 &&
             IsTimeValid();
+        }
 
-        private bool isKeyPointNamesValid => ConvertKeyPointNames(KeyPointNames).Count >= 2;
+        public bool isKeyPointNamesValid => ConvertKeyPointNames(KeyPointNames).Count >= 2;
+
+        private string _tourRequestValidator = "Collapsed";
+        public string TourRequestValidator
+        {
+            get => _tourRequestValidator;
+            set
+            {
+                _tourRequestValidator = value;
+                OnPropertyChanged(nameof(TourRequestValidator));
+            }
+        }
+
+        private string _timeValidator = "Collapsed";
+        public string TimeValidator
+        {
+            get => _timeValidator;
+            set
+            {
+                _timeValidator = value;
+                OnPropertyChanged(nameof(TimeValidator));
+            }
+        }
+
+        private string _imagesValidator = "Collapsed";
+        public string ImagesValidator
+        {
+            get => _imagesValidator;
+            set
+            {
+                _imagesValidator = value;
+                OnPropertyChanged(nameof(ImagesValidator));
+            }
+        }
+
+        private string _languageValidator = "Collapsed";
+        public string LanguageValidator
+        {
+            get => _languageValidator;
+            set
+            {
+                _languageValidator = value;
+                OnPropertyChanged(nameof(LanguageValidator));
+            }
+        }
+
+        private string _descriptionValidator = "Collapsed";
+        public string DescriptionValidator
+        {
+            get => _descriptionValidator;
+            set
+            {
+                _descriptionValidator = value;
+                OnPropertyChanged(nameof(DescriptionValidator));
+            }
+        }
+
+        private string _locationValidator = "Collapsed";
+        public string LocationValidator
+        {
+            get => _locationValidator;
+            set
+            {
+                _locationValidator = value;
+                OnPropertyChanged(nameof(LocationValidator));
+            }
+        }
+
+        private string _nameValidator = "Collapsed";
+        public string NameValidator
+        {
+            get => _nameValidator;
+            set
+            {
+                _nameValidator = value;
+                OnPropertyChanged(nameof(NameValidator));
+            }
+        }
+
+        private string _keyPointValidatorVisibility = "Collapsed";
+        public string KeyPointValidatorVisibility
+        {
+            get => _keyPointValidatorVisibility;
+            set
+            {
+                _keyPointValidatorVisibility = value;
+                OnPropertyChanged(nameof(KeyPointValidatorVisibility));
+            }
+        }
+
 
         private bool IsTimeValid()
         {
@@ -134,8 +233,11 @@ namespace BookingApp.ViewModel.Guide
             {
                 if (Convert.ToDateTime(Start) < tourRequest.Start || Convert.ToDateTime(Start).AddHours(Duration) > tourRequest.End)
                 {
+                    TourRequestValidator = "Visible";
                     return false;
                 }
+
+                TourRequestValidator = "Collapsed";
             }
 
             return true;
@@ -152,7 +254,7 @@ namespace BookingApp.ViewModel.Guide
         }
 
         private readonly int userId;
-        private readonly TourRequest tourRequest;
+        public TourRequest tourRequest;
 
         private TourService tourService = new TourService();
         private ScheduledTourService scheduledTourService = new ScheduledTourService();
@@ -226,7 +328,7 @@ namespace BookingApp.ViewModel.Guide
 
         public bool CreateTour()
         {
-            if (IsTourValid)
+            if (IsTourValid())
             {
                 (Tour tour, ScheduledTour scheduledTour) = InitializeTours();
 
