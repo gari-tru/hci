@@ -229,9 +229,9 @@ namespace BookingApp.ViewModel.Guide
                 }
             }
 
-            if (tourRequest != null)
+            if (TourRequest != null)
             {
-                if (Convert.ToDateTime(Start) < tourRequest.Start || Convert.ToDateTime(Start).AddHours(Duration) > tourRequest.End)
+                if (Convert.ToDateTime(Start) < TourRequest.Start || Convert.ToDateTime(Start).AddHours(Duration) > TourRequest.End)
                 {
                     TourRequestValidator = "Visible";
                     return false;
@@ -254,7 +254,17 @@ namespace BookingApp.ViewModel.Guide
         }
 
         private readonly int userId;
-        public TourRequest tourRequest;
+
+        private TourRequest _tourRequest;
+        public TourRequest TourRequest
+        {
+            get => _tourRequest;
+            set
+            {
+                _tourRequest = value;
+                OnPropertyChanged(nameof(TourRequest));
+            }
+        }
 
         private TourService tourService = new TourService();
         private ScheduledTourService scheduledTourService = new ScheduledTourService();
@@ -299,7 +309,7 @@ namespace BookingApp.ViewModel.Guide
             this.userId = userId;
             Locations = locationService.GetAll();
             Languages = languageService.GetAll();
-            this.tourRequest = tourRequest;
+            TourRequest = tourRequest;
 
             if (tourRequest != null)
             {
@@ -336,9 +346,9 @@ namespace BookingApp.ViewModel.Guide
                 scheduledTour.TourId = tour.Id;
                 scheduledTourService.Save(scheduledTour);
 
-                if (tourRequest != null)
+                if (TourRequest != null)
                 {
-                    string notification = $"{tourRequest.Id}|{Start}";
+                    string notification = $"{TourRequest.Id}|{Start}";
                     using (StreamWriter writer = File.AppendText(_notificationsPath))
                     {
                         writer.WriteLine(notification);
@@ -376,9 +386,9 @@ namespace BookingApp.ViewModel.Guide
                 FreeSpots = MaxTourists,
             };
 
-            if (tourRequest != null)
+            if (TourRequest != null)
             {
-                scheduledTour.Tourists = tourRequest.Tourists;
+                scheduledTour.Tourists = TourRequest.Tourists;
                 scheduledTour.FreeSpots = 0;
             }
 

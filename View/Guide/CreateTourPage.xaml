@@ -39,6 +39,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="Kreiranje ture" Style="{StaticResource h1}"/>
@@ -162,17 +163,17 @@
             </Grid>
             <TextBlock Grid.Row="21" Text="Unet termin je zauzet" Visibility="{Binding TimeValidator}"
                 Style="{StaticResource h4}" Foreground="Red" Margin="0,10,0,0"/>
-            <StackPanel Grid.Row="22" Orientation="Horizontal" Margin="0,10,0,0" Visibility="{Binding TourRequestValidator}">
-                <TextBlock  Text="Termin mora biti između " Style="{StaticResource h4}" Foreground="Red"/>
-                <TextBlock  Text="{Binding tourRequest.Start}" Style="{StaticResource h4}" Foreground="Red"/>
-                <TextBlock  Text="i" Style="{StaticResource h4}" Foreground="Red"/>
-                <TextBlock  Text="{Binding tourRequest.End}" Style="{StaticResource h4}" Foreground="Red"/>
+            <TextBlock Grid.Row="22" Text="Termin mora biti između" Style="{StaticResource h4}" Foreground="Red" Visibility="{Binding TourRequestValidator}" Margin="0,10,0,0"/>
+            <StackPanel Grid.Row="23" Orientation="Horizontal" Margin="0,10,0,0" Visibility="{Binding TourRequestValidator}">
+                <TextBlock  Text="{Binding TourRequest.Start, StringFormat={StaticResource DateTimeFormat}}" Style="{StaticResource h4}" Foreground="Red"/>
+                <TextBlock  Text="  i  " Style="{StaticResource h4}" Foreground="Red"/>
+                <TextBlock  Text="{Binding TourRequest.End, StringFormat={StaticResource DateTimeFormat}}" Style="{StaticResource h4}" Foreground="Red"/>
             </StackPanel>
 
-            <TextBlock Grid.Row="23" Text="Slike" Style="{StaticResource h3}" Foreground="White" Margin="0,10,0,0" HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="24" Text="Okačiti barem jednu sliku" Visibility="{Binding ImagesValidator}"
+            <TextBlock Grid.Row="24" Text="Slike" Style="{StaticResource h3}" Foreground="White" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="25" Text="Okačiti barem jednu sliku" Visibility="{Binding ImagesValidator}"
                 Style="{StaticResource h4}" Foreground="Red" Margin="0,10,0,0" TextAlignment="Center"/>
-            <ItemsControl Grid.Row="25" ItemsSource="{Binding Images}" Height="Auto">
+            <ItemsControl Grid.Row="26" ItemsSource="{Binding Images}" Height="Auto">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,10,0,0">
@@ -185,7 +186,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <Button Content="Kreiraj" Grid.Row="26" Click="btnCreateTour_Click" Style="{StaticResource button}" Margin="0,10,0,10"/>
+            <Button Content="Kreiraj" Grid.Row="27" Click="btnCreateTour_Click" Style="{StaticResource button}" Margin="0,10,0,10"/>
         </Grid>
     </ScrollViewer>
 </Page>
